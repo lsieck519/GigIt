@@ -3,13 +3,16 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const gigSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     trim: true,
+    min: 2,
+    max: 60,
   },
   description: {
     type: String,
+    max: 200,
   },
   image: {
     type: String,
@@ -20,7 +23,6 @@ const gigSchema = new Schema({
   yearsExperience: {
     type: Number,
     min: 0,
-    default: 0,
   },
 });
 
