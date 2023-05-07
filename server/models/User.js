@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
-// bcrypt = random string of letters and numbers to protect the website
+
 const bcrypt = require("bcrypt");
+
 const Gig = require("./Gig");
 const Social = require("./Social");
 
+// users will sign in using email + password combo 
+// display name on user profile can be their first name and last initial?
+
 const userSchema = new Schema({
-  // schema here!
   firstName: {
     type: String,
     required: true,
@@ -17,11 +20,6 @@ const userSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-  },
-  username: {
-    type: String,
-    required: true,
-    unique: true,
   },
   email: {
     type: String,
@@ -38,15 +36,20 @@ const userSchema = new Schema({
 });
 
 // set up pre-save middleware to create password
-// look into later for saving passwords
-// userSchema.pre('save', async function(next) {
-//     if (this.isNew || this.isModified('password')) {
-//       const saltRounds = 10;
-//       this.password = await bcrypt.hash(this.password, saltRounds);
-//     }
-//       next();
-// });
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
 
-const User = mongoose.model("User", userSchema);
+  next();
+});
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

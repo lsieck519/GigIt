@@ -3,24 +3,29 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const socialSchema = new Schema({
-  // add social schema here - linkedIn, IG, facebook? any other apps?
   linkedIn: {
     type: String,
+    trim: true,
   },
   instagram: {
     type: String,
+    trim: true,
   },
   facebook: {
     type: String,
+    trim: true,
   },
   twitter: {
     type: String,
+    trim: true,
   },
   github: {
     type: String,
+    trim: true,
   },
   stackOverflow: {
     type: String,
+    trim: true,
   },
 });
 
