@@ -25,6 +25,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    match: [/.+@.+\..+/, 'Must use a valid email address!'],
   },
   password: {
     type: String,
@@ -32,7 +33,7 @@ const userSchema = new Schema({
     minlength: 5,
   },
   gigs: [Gig.schema],
-  socials: [Social.schema]
+  socials: [Social.schema],
 });
 
 // set up pre-save middleware to create password
