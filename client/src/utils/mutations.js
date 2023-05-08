@@ -1,37 +1,6 @@
 import { gql } from "@apollo/client";
 
-// TODO: update based on models and schema
-export const LOGIN = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-      }
-    }
-  }
-`;
 
-// TODO: update based on models and schema
-export const ADD_GIG = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
-        }
-      }
-    }
-  }
-`;
-
-// TODO: update based on models and schema
 export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
@@ -49,6 +18,65 @@ export const ADD_USER = gql`
       user {
         _id
       }
+    }
+  }
+`;
+
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+
+// not super confident about these last four yet 
+
+export const ADD_GIG = gql`
+  mutation addGig($input: GigInput!) {
+    addGig(input: $input) {
+      _id
+      title
+      description
+      image
+      compensation
+      yearsExperience
+    }
+  }
+`;
+
+
+export const REMOVE_GIG = gql`
+  mutation removeGig($gigId: ID!) {
+    removeGig(gigId: $id) {
+      _id
+      title
+      description
+      image
+      compensation
+      yearsExperience
+    }
+  }
+`;
+
+
+
+export const ADD_SOCIAL  = gql`
+  mutation addSocial($social: String!) {
+    addSocial(social: $social) {
+      _id
+    }
+  }
+`;
+
+export const REMOVE_SOCIAL = gql`
+  mutation ($social: String!) {
+    removeSocial(social: $social) {
+      _id
     }
   }
 `;
