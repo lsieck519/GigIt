@@ -32,7 +32,7 @@ const typeDefs = gql`
   type Query {
 
   }
-
+  // mutations for later use of adding and updating a user 
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     updateUser(firstName: String, lastName: String, email: String, password: String): User
