@@ -27,6 +27,22 @@ function Nav() {
       );
     }
   }
+//added this because before the Nav wasn't showing up
+  return (
+    <nav className="navbar">
+      <div className="container">
+        <div className="navbar-brand">
+          <Link className="navbar-item" to="/">
+            Home
+          </Link>
+        </div>
+        <div className="navbar-menu">
+          <div className="navbar-end">{showNavigation()}</div>
+        </div>
+      </div>
+    </nav>
+  );
+
 }
 
 export default Nav;
