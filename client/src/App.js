@@ -12,8 +12,6 @@ import Home from "./pages/Home";
 import GigProfile from "./pages/GigProfile";
 import Nav from "./components/Nav";
 
-//?//
-import { GigProvider } from "./utils/GlobalState";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -39,13 +37,13 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <GigProvider>
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<GigProfile />} />
-            </Routes>
-          </GigProvider>
+          {/* <GigProvider> */}
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<GigProfile />} />
+          </Routes>
+          {/* </GigProvider> */}
         </div>
       </Router>
     </ApolloProvider>
