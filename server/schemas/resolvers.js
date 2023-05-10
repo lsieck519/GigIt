@@ -34,7 +34,7 @@ const resolvers = {
           email: user.email,
           about: user.about,
           gigs: user.gigs,
-          socials: user.social
+          socials: user.socials
         }
       }
       return 
