@@ -4,11 +4,8 @@ const { Schema } = mongoose;
 
 const bcrypt = require("bcrypt");
 
-const Gig = require("./Gig");
+const gigSchema = require("./Gig");
 const Social = require("./Social");
-
-// users will sign in using email + password combo 
-// display name on user profile can be their first name and last initial?
 
 const userSchema = new Schema({
   firstName: {
@@ -40,7 +37,8 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  gigs: [Gig.schema],
+  // change socials simialr to gigSchema 
+  gigs: [gigSchema],
   socials: [Social.schema],
 });
 

@@ -12,7 +12,7 @@ export const ADD_USER = gql`
     addUser(
       firstName: $firstName
       lastName: $lastName
-      $username: String!
+      username: $username
       email: $email
       password: $password
     ) {
@@ -76,7 +76,7 @@ export const ADD_SOCIAL  = gql`
 `;
 
 export const REMOVE_SOCIAL = gql`
-  mutation ($social: String!) {
+  mutation removeSocial($social: String!) {
     removeSocial(social: $social) {
       _id
     }

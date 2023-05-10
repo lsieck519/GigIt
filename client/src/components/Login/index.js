@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import './Login.css';
 
-function Login() {
-    const [emailOrUsername, setEmailOrUsername] = useState('');
-    const [password, setPassword] = useState('');
+function Login(props) {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN_USER);
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {//TODO: Create Login API
-            const response = await fetch('enter-our-login-api-here', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ emailOrUsername, password }),
-            });
-      
-            if (response.ok) {
-              const { token } = await response.json();
-              Auth.login(token);
-            } else {
-              // enter error handling
-            }
-          } catch (error) {
-            // more error handeling
-          }
+        try {
+          const mutationResponse = await login({
+            variables: { email: formState.email, password: formState.password },
+          });
+          const token = mutationResponse.data.login.token;
+          Auth.login(token);
+        } catch (e) {
+          console.log(e);
+        }
+    };
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
     };
     
     return (
@@ -32,19 +34,26 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Email or Username"
-              value={emailOrUsername}
-              onChange={(e) => setEmailOrUsername(e.target.value)}
+              placeholder="Email"
+              value={formState.email}
+              onChange={handleChange}
               required
             />
             <input
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formState.password}
+              onChange={handleChange}
               required
-            />
-            <button type="submit">Log In</button>
+          />
+         
+            <button className='button is-info' type="submit">Log In</button>
+           
+            {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
           </form>
         </div>
       );

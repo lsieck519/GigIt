@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
+import { ADD_USER } from '../../utils/mutations';
+import './Signup.css';
 
-function Signup() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+function Signup(props) {
+    const [formState, setFormState] = useState({ firstName: '', lastName: '', username: '', email: '', password: '' });
+    const [addUser] = useMutation(ADD_USER);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try { //TODO: CREATE SIGNUP API
-        const response = await fetch('make-a-signup-api', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-  
-        if (response.ok) {
-          const { token } = await response.json();
-          Auth.login(token);
-        } else {
-          // TODO: Handle errors
-        }
-      } catch (error) {
-        // TODO: more error handling here
-      }
-  };
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const mutationResponse = await addUser({
+        variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          username: formState.username,
+          email: formState.email,
+          password: formState.password,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+    };
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    };
 
   return (
     <div>
@@ -36,36 +37,36 @@ function Signup() {
         <input
           type="text"
           placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          value={formState.firstName}
+          onChange={handleChange}
           required
         />
         <input
           type="text"
           placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          value={formState.lastName}
+          onChange={handleChange}
           required
         />
         <input
           type="text"
           placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={formState.username}
+          onChange={handleChange}
           required
         />
         <input
           type="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={formState.email}
+          onChange={handleChange}
           required
         />
         <input
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={formState.password}
+          onChange={handleChange}
           required
         />
         <button type="submit">Sign Up</button>

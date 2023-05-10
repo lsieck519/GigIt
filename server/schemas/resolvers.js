@@ -20,57 +20,39 @@ const resolvers = {
         yearsExperience: 2,
       };
     },
-    // TODO: finding all gigs for a user
 
     // TODO: Complete the below
     // this finds one user and all of their gigs
     me: async (parent, args, context) => {
-      // if (context.user) {
-      //   const user = await User.findById(context.user._id).populate({
-      //     path: "orders.products",
-      //     populate: "category",
-      //   });
-      //   //   return user;
-      // }
+      if (context.user) {
+        const user = await User.findById(context.user._id);
+        return {
+          _id: user._id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          username: user.username,
+          email: user.email,
+          about: user.about,
+          gigs: user.gigs,
+          socials: user.social
+        }
+      }
+      return 
+    },
+
+    // finding all gigs for a user
+    userGigs: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id)
+        return {
+          _id: user._id,
+          gigs: user.gigs,
+        }
+      }
+    }
+  },
 
       // throw new AuthenticationError("Not logged in");
-
-      return {
-        _id: "123ABC",
-        firstName: "Someone",
-        lastName: "Generic",
-        username: "some1generic",
-        email: "someone@example.com",
-        gigs: [
-          {
-            _id: "asffhjasdf",
-            title: "Awesome title",
-            description: "Some description",
-            image: "http://somelocation.com/image.png",
-            compensation: "1000",
-            yearsExperience: 2,
-          },
-          {
-            _id: "23fasdf",
-            title: "Awesome Gig",
-            description: "Some description",
-            image: "http://somelocation.com/image.png",
-            compensation: "1000",
-            yearsExperience: 4,
-          },
-          {
-            _id: "56gsaf",
-            title: "Crappy Gig",
-            description: "Some description",
-            image: "http://somelocation.com/image.png",
-            compensation: "1000",
-            yearsExperience: 6,
-          },
-        ],
-        socials: [],
-      };
-    },
-  },
 
   Mutation: {
     // TODO: create addUser mutation
@@ -120,4 +102,5 @@ const resolvers = {
     // TODO: updateGig mutation
   },
 };
+
 module.exports = resolvers;
