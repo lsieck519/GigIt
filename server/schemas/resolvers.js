@@ -12,11 +12,11 @@ const resolvers = {
       // },
       const { id } = args;
       return {
-        _id: "asffhjasdf",
-        title: "Awesome title",
-        description: "Some description",
-        image: "http://somelocation.com/image.png",
-        compensation: "1000",
+        _id: 'asffhjasdf',
+        title: 'Awesome title',
+        description: 'Some description',
+        image: 'http://somelocation.com/image.png',
+        compensation: '1000',
         yearsExperience: 2,
       };
     },
@@ -34,25 +34,25 @@ const resolvers = {
           email: user.email,
           about: user.about,
           gigs: user.gigs,
-          socials: user.socials
-        }
+          socials: user.socials,
+        };
       }
-      return 
+      return;
     },
 
     // finding all gigs for a user
     userGigs: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id)
+        const user = await User.findById(context.user._id);
         return {
           _id: user._id,
           gigs: user.gigs,
-        }
+        };
       }
-    }
+    },
   },
 
-      // throw new AuthenticationError("Not logged in");
+  // throw new AuthenticationError("Not logged in");
 
   Mutation: {
     // TODO: create addUser mutation
@@ -71,7 +71,7 @@ const resolvers = {
         });
       }
 
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError('Not logged in');
     },
 
     // TODO: update login mutation
@@ -79,13 +79,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -95,7 +95,16 @@ const resolvers = {
 
     // TODO: addAbout mutation
 
+
     // TODO: updateAbout mutation
+    updateAbout: (parent, { id, about }) => {
+      const user = user.find((user) => user.id === id);
+      if (!user) {
+        throw new Error(`User with id ${id} not found.`);
+      }
+      user.about = about;
+      return user;
+    },
 
     // TODO: addGig mutation
 

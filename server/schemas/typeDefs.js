@@ -37,7 +37,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    # user(id: ID!): User
+    user(id: ID!): User
     gig(id: ID!): Gig
     userGigs: User
   }
@@ -45,23 +45,23 @@ const typeDefs = gql`
   # // mutations for later use of adding and updating a user
   type Mutation {
     updateUser(
-      firstName: String!,
-      lastName: String!,
-      email: String!,
-      username: String!,
+      firstName: String!
+      lastName: String!
+      email: String!
+      username: String!
       password: String!
     ): User
-    login(
-      email: String!,
-      password: String!
-      ): Auth
+    login(email: String!, password: String!): Auth
     addUser(
-      firstName: String!,
-      lastName: String!,
-      username: String!,
-      email: String!,
+      firstName: String!
+      lastName: String!
+      username: String!
+      email: String!
       password: String!
     ): Auth
+    updateAbout(
+      id: ID!, 
+      about: String!): User
   }
 `;
 

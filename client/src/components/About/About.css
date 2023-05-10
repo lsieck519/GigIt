@@ -1,0 +1,20 @@
+.about-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+ .fullname {
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: lighter;
+  margin-top: 0%;
+ }
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
