@@ -1,10 +1,12 @@
 import { useQuery } from "@apollo/client";
-import { GET_USER } from "../utils/queries";
+// import { GET_USER } from "../utils/queries";
+import {GET_USER_GIGS} from "../utils/queries";
+import Card from "../components/Card";
 
 // Create a page where we display gig information
 const GigProfile = () => {
   // Query for the gig
-  const { loading, data } = useQuery(GET_USER);
+  const { loading, data } = useQuery(GET_USER_GIGS);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -16,7 +18,11 @@ const GigProfile = () => {
   return (
     <>
       {gigs.map((gig) => (
-        <div>{gig?.title}</div>
+        <Card 
+          // image={cardData.image} 
+          title={gig.title} 
+          // description={cardData.description} 
+        />
       ))}
     </>
   );

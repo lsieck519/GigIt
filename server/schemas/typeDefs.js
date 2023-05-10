@@ -39,24 +39,30 @@ const typeDefs = gql`
     me: User
     # user(id: ID!): User
     gig(id: ID!): Gig
+    userGigs: User
   }
 
   # // mutations for later use of adding and updating a user
-  # type Mutation {
-  #   addUser(
-  #     firstName: String!
-  #     lastName: String!
-  #     email: String!
-  #     password: String!
-  #   ): Auth
-  #   updateUser(
-  #     firstName: String
-  #     lastName: String
-  #     email: String
-  #     password: String
-  #   ): User
-  #   login(email: String!, password: String!): Auth
-  # }
+  type Mutation {
+    updateUser(
+      firstName: String!,
+      lastName: String!,
+      email: String!,
+      username: String!,
+      password: String!
+    ): User
+    login(
+      email: String!,
+      password: String!
+      ): Auth
+    addUser(
+      firstName: String!,
+      lastName: String!,
+      username: String!,
+      email: String!,
+      password: String!
+    ): Auth
+  }
 `;
 
 module.exports = typeDefs;
