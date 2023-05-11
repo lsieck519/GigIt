@@ -1,6 +1,41 @@
 .login-form {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 1%;
+  background-color: #228657;
+  opacity: .7;
+  color: white;
+  width: 350px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-form form {
+  margin-left: 25%;
+}
+
+.gigintitle {
+  font-size: 2em;
+  margin-left: 35%;
+  margin-top: 20%;
+}
+
+.login-form .button {
+  margin-left: 20%;
+  background-color: #228657;
+  border-color: #228657;
+  color: white;
+}
+
+.button:hover {
+  border-color: #228657;
+  color: white;
+}
+
+.cred-error {
+  color: rgb(109, 21, 21);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.card {
+  border-radius: 10%;
 }

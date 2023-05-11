@@ -38,8 +38,10 @@ function Signup(props) {
   };
 
   return (
-    <div className="signup-form">
-      <h2>Signup</h2>
+    <div className="signup-form card">
+      <div className="card-content">
+        <p className='noaccount'>Don't have an account?</p>
+      <h2 className="gigstartedtitle">GigStarted</h2>
       <form onSubmit={handleSubmit}>
         <div className="first-input">
           <input
@@ -87,9 +89,10 @@ function Signup(props) {
           />
         </div>
         <div className="submit-signup">
-          <button className='button is-light is-small' type="submit">Submit</button>
+          <button className='button is-small' type="submit">Submit</button>
         </div>
-      </form>
+        </form>
+        </div>
     </div>
   );
 }
