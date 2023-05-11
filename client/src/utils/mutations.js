@@ -5,12 +5,14 @@ export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
     $lastName: String!
+    $username: String!
     $email: String!
     $password: String!
   ) {
     addUser(
       firstName: $firstName
       lastName: $lastName
+      username: $username
       email: $email
       password: $password
     ) {
@@ -34,7 +36,14 @@ export const LOGIN_USER = gql`
 `;
 
 
-// not super confident about these last four yet 
+export const UPDATE_ABOUT = gql`
+  mutation UpdateAbout($userId: ID!, $about: String!) {
+    updateAbout(id: $userId, about: $about) {
+      about
+    }
+  }
+`;
+
 
 export const ADD_GIG = gql`
   mutation addGig($input: GigInput!) {
@@ -74,7 +83,7 @@ export const ADD_SOCIAL  = gql`
 `;
 
 export const REMOVE_SOCIAL = gql`
-  mutation ($social: String!) {
+  mutation removeSocial($social: String!) {
     removeSocial(social: $social) {
       _id
     }

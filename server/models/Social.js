@@ -29,6 +29,5 @@ const socialSchema = new Schema({
   },
 });
 
-const Social = mongoose.model("Social", socialSchema);
 
-module.exports = Social;
+module.exports = socialSchema;
