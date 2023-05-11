@@ -36,7 +36,14 @@ export const LOGIN_USER = gql`
 `;
 
 
-// not super confident about these last four yet 
+export const UPDATE_ABOUT = gql`
+  mutation UpdateAbout($userId: ID!, $about: String!) {
+    updateAbout(id: $userId, about: $about) {
+      about
+    }
+  }
+`;
+
 
 export const ADD_GIG = gql`
   mutation addGig($input: GigInput!) {

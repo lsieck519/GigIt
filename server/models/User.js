@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 
 const gigSchema = require("./Gig");
-const Social = require("./Social");
+const socialSchema = require("./Social");
 
 const userSchema = new Schema({
   firstName: {
@@ -39,7 +39,7 @@ const userSchema = new Schema({
   },
   // change socials simialr to gigSchema 
   gigs: [gigSchema],
-  socials: [Social.schema],
+  socials: [socialSchema],
 });
 
 // set up pre-save middleware to create password
