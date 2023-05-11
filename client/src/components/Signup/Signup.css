@@ -1,6 +1,36 @@
 .signup-form {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 1%;
+  background-color: #228657;
+  opacity: .7;
+  color: white;
+  width: 350px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form form {
+  margin-left: 25%;
+}
+
+.signup-form .noaccount {
+  font-size: 1em;
+  margin-left: 25%;
+  margin-top: 10%;
+}
+
+.gigstartedtitle {
+  font-size: 2em;
+  margin-left: 25%;
+}
+
+.signup-form .button {
+  margin-left: 20%;
+  background-color: #228657;
+  border-color: #228657;
+  color: white;
+}
+
+.signup-form .button:hover {
+  border-color: #228657;
+  color: white;
 }

@@ -24,7 +24,7 @@ export const GET_USER = gql`
 // idk if we will need this but i am trying to figure out how to get user id for the about component 
 export const GET_USER_ID = gql`
   query getUserID($userId: ID!) {
-    user(id: $userId) 
+    _id
   }
 `;
 
