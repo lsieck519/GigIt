@@ -9,7 +9,7 @@ export const GET_USER = gql`
         title
         description
       }
-      social {
+      socials {
         linkedIn
         instagram
         facebook
@@ -18,13 +18,6 @@ export const GET_USER = gql`
         stackOverflow
       }
     }
-  }
-`;
-
-// idk if we will need this but i am trying to figure out how to get user id for the about component 
-export const GET_USER_ID = gql`
-  query getUserID($userId: ID!) {
-    _id
   }
 `;
 
@@ -43,6 +36,37 @@ export const GET_USER_GIGS = gql`
       }
     }
   }`;
+
+  // new query for Gig Profiles
+  //TODO: Fix this
+  export const GET_USER_PROFILE = gql`
+  query getUserProfile {
+    me {
+      _id
+      firstName
+      lastName
+      username
+      email
+      about
+      gigs {
+        _id
+        title
+        description
+        image
+        compensation
+        yearsExperience
+      }
+      socials {
+        linkedIn
+        instagram
+        github
+        facebook
+        stackOverflow
+        twitter
+      }
+    }
+  }
+  `
 
 // get specific gig
 // export const GET_GIG = gql`

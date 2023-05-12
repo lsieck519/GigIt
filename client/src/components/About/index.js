@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import './About.css';
-import { GET_USER_ID } from '../../utils/queries';
+import { GET_USER } from '../../utils/queries';
 import { UPDATE_ABOUT } from '../../utils/mutations'
 
 const About = ({ userId, loggedInUserId }) => {
   const [about, setAbout] = useState('');
-  const { loading, error, data } = useQuery(GET_USER_ID, {
+  const { loading, error, data } = useQuery(GET_USER, {
     variables: { userId },
   });
 
@@ -41,7 +41,7 @@ const About = ({ userId, loggedInUserId }) => {
     </p>
   );
 
-  const { firstName, lastName } = data.user;
+  const { firstName, lastName } = data.me;
   const isCurrentUser = userId === loggedInUserId;
   const canEditAbout = isCurrentUser && loggedInUserId !== '';
 
