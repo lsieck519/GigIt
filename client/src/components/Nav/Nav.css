@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #85BB65;
+  width: 100%;
+}
+
+.navbar-menu {
+  width: 100%;
+}
+
+a:visited {
+  color: #f1f1f1;
+}
+
+a {
+  font-size: 18px;
+}
