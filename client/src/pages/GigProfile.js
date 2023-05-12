@@ -1,12 +1,15 @@
 import React from "react";
 import AuthService from "../utils/auth";
 import { useQuery } from "@apollo/client";
+
 import { useParams } from "react-router-dom";
 import {GET_USER_PROFILE} from "../utils/queries";
 // import Contact from "../components/Contact";
+
 import Card from "../components/Card";
 import About from "../components/About";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 
 // Create a page where we display gig information
 const GigProfile = () => {
