@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import {GET_USER_GIGS} from "../utils/queries";
 import Card from "../components/Card";
 import About from "../components/About";
+import Footer from "../components/Footer"
 
 // Create a page where we display gig information
 const GigProfile = () => {
@@ -18,6 +19,7 @@ const GigProfile = () => {
   // Display gig info
   return (
     <>
+      <About/>
       {gigs.map((gig) => (
         <Card
           // image={cardData.image}
@@ -25,7 +27,7 @@ const GigProfile = () => {
           // description={cardData.description}
         />
       ))}
-      <About/>
+      <Footer />
     </>
   );
 };
