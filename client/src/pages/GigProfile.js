@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 
 import { useParams } from "react-router-dom";
 import {GET_USER_PROFILE} from "../utils/queries";
+// import {GET_USER_GIGS} from "../utils/queries";
 // import Contact from "../components/Contact";
 
 import Card from "../components/Card";
@@ -23,8 +24,8 @@ const GigProfile = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  
-  const gigs= data?.user?.gigs ?? [];
+
+  const gigs = data?.me?.gigs ?? [] ;
 
   return (
    <>
