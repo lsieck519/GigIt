@@ -44,6 +44,36 @@ export const GET_USER_GIGS = gql`
     }
   }`;
 
+  // new query for Gig Profiles
+  //TODO: Fix this
+  export const GET_USER_PROFILE = gql`
+  query getUserProfile {
+    user {
+      _id
+      firstName
+      lastName
+      username
+      email
+      about
+      gigs {
+        _id
+        title
+        description
+        image
+        compensation
+        yearsExperience
+      }
+      socials {
+        linkedIn
+        Instagram
+        GitHub
+        Facebook
+        StackOverflow
+      }
+    }
+  }
+  `
+
 // get specific gig
 // export const GET_GIG = gql`
 //   query getGig($gigId: ID!) {

@@ -24,5 +24,8 @@
   "homepage": "https://github.com/lsieck519/GigIt#readme",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.22"
   }
 }
