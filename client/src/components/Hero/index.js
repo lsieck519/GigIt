@@ -7,8 +7,13 @@ import './Hero.css';
 const Hero= () => {
   return (
     <div className="hero">
-      <h2>About GigIt</h2>
-      <p> This is a little something about why we created this app and what it can do to help you make some extra money!</p>
+      <h2 className="hero-title">GigIt</h2>
+      <h2 className='vertical-line'>|</h2>
+      <ul className="hero-content">
+        <li>Book your next gig!🚀</li>
+        <li>Show off your side hustles!💪</li>
+        <li>Increase your revenue!💸</li>
+      </ul>
     </div>
   );
 };
