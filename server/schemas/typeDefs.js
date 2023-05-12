@@ -4,10 +4,11 @@ const typeDefs = gql`
   type Social {
     _id: ID
     linkedIn: String
-    Instagram: String
-    GitHub: String
-    Facebook: String
-    StackOverflow: String
+    instagram: String
+    github: String
+    facebook: String
+    stackOverflow: String
+    twitter: String
   }
 
   type Gig {
