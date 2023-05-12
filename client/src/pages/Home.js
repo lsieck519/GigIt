@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../components/Hero";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
+import Footer from "../components/Footer"
 
 function Home(props) {
   return (
@@ -15,6 +16,7 @@ function Home(props) {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
