@@ -1,0 +1,33 @@
+.card-item {
+
+    background-color: #228657;
+    
+    opacity: .7;
+    
+    color: white;
+    
+    width: 350px;
+    
+    height: 350px;
+    
+    margin-left: auto;
+    
+    margin-right: auto;
+    
+    border-radius: 10%;
+    
+    }
+    
+    .gigTitle {
+    
+    font-size: 2em
+    
+    }
+    
+      
+    
+    .gigbody {
+    
+    font-size: 1.5em
+    
+    }

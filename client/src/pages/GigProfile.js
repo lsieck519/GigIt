@@ -6,6 +6,7 @@ import {GET_USER_PROFILE} from "../utils/queries";
 // import Contact from "../components/Contact";
 // import Card from "../components/Card";
 import About from "../components/About";
+import Footer from "../components/Footer"
 
 // Create a page where we display gig information
 const GigProfile = () => {
@@ -21,7 +22,7 @@ const GigProfile = () => {
   if (error) return <div>Error: {error.message}</div>;
   
   return (
-    <>
+   <>
     <aside>
       {/* <Contact userId={userId} loggedInUserId={currentUserId} /> */}
     </aside>
@@ -31,6 +32,16 @@ const GigProfile = () => {
         {/* <Card userId={userId} loggedInUserId={currentUserId} /> */}
       </div>
     </section>
+      {gigs.map((gig) => (
+        <Card
+          image={gig.image}
+          title={gig.title}
+          description={gig.description}
+          compensation={gig.compensation}
+          yearsExperience={gig.yearsExperience}
+        />
+      ))}
+      <Footer />
     </>
   )
 
