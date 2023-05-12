@@ -24,20 +24,25 @@ const resolvers = {
     // TODO: Complete the below
     // this finds one user and all of their gigs
     me: async (parent, args, context) => {
+      console.log(context.user);
+
       if (context.user) {
         const user = await User.findById(context.user._id);
-        return {
-          _id: user._id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          username: user.username,
-          email: user.email,
-          about: user.about,
-          gigs: user.gigs,
-          socials: user.socials,
-        };
+        console.log(user);
+        // return {
+        //   _id: user._id,
+        //   firstName: user.firstName,
+        //   lastName: user.lastName,
+        //   username: user.username,
+        //   email: user.email,
+        //   about: user.about,
+        //   gigs: user.gigs,
+        //   socials: user.socials,
+        // };
+        return user;
+      } else {
+        console.log("Not logged in");
       }
-      return;
     },
 
     // finding all gigs for a user
