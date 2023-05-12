@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import {GET_USER_PROFILE} from "../utils/queries";
 // import Contact from "../components/Contact";
-// import Card from "../components/Card";
+import Card from "../components/Card";
 import About from "../components/About";
 import Footer from "../components/Footer"
 
@@ -14,13 +14,15 @@ const GigProfile = () => {
   const currentUserId = AuthService.getProfile()?._id;
 
   // Fetch the user profile by using the useQuery hook
-  const { loading, error } = useQuery(GET_USER_PROFILE, {
+  const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     variables: {id: userId },
   });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   
+  const gigs= data?.user?.gigs ?? [];
+
   return (
    <>
     <aside>
