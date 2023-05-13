@@ -8,18 +8,18 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         const { id } = args;
-        const {loggedInUserId} = context;
+        const { loggedInUserId } = context;
 
         const user = id
           ? await User.findOne({ _id: id })
           : await User.findById(context.user._id);
-    
+
         return user;
       } else {
         console.log('Not logged in');
       }
     },
-  },    
+  },
 
   Mutation: {
     addUser: async (parent, args) => {
@@ -40,40 +40,21 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
-    addAbout: async (parent, { about }, context) => {
-      if (!context.user) {
-        throw new Error('Authentication required.');
-      }
-      try {
-        const user = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { about } },
-          { new: true }
-        );
-        return user;
-      } catch (error) {
-        throw new Error('Failed to update user about.');
-      }
-    },
-
     updateAbout: async (parent, { about }, context) => {
       if (!context.user) {
         throw new Error('Authentication required.');
       }
-
       try {
-        const user = await User.findOneAndUpdate(
+        const user = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { about } },
+          { $set: { about: about } },
           { new: true }
         );
         return user;
       } catch (error) {
-        throw new Error('Failed to update user about.');
+        throw new Error('Failed to update user about!');
       }
     },
-
     addGig: async (
       parent,
       { title, description, image, compensation, yearsExperience },
