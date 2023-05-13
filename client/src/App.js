@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import GigProfile from "./pages/GigProfile";
 import Nav from "./components/Nav";
 
-
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -41,7 +40,11 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/profile/:userId" element={<GigProfile />} getKey={(params) => params.userId} />
+            <Route
+              path="/profile/:userId"
+              element={<GigProfile />}
+              getKey={(params) => params.userId}
+            />
           </Routes>
           {/* </GigProvider> */}
         </div>

@@ -26,6 +26,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "react-scroll": "^1.8.9"
   }
 }

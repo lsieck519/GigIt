@@ -25,3 +25,9 @@ body {
 .menu {
   background-color: #43ac7b;
 }
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
