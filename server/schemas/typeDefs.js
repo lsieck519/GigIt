@@ -51,8 +51,7 @@ const typeDefs = gql`
       password: String!
     ): Auth
     login(email: String!, password: String!): Auth
-    addAbout(about: String!, profilepic: String): User
-    updateAbout(about: String!, profilepic: String): User
+    updateAbout(about: String!): User
     addSocial(
       linkedIn: String
       instagram: String
