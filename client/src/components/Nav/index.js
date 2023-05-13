@@ -53,17 +53,15 @@ function Nav() {
   //added this because before the Nav wasn't showing up
   return (
     <nav className="navbar m-0 p-0">
-      <div className="container m-0 pl-5">
-        <div className="navbar-brand">
-          <Link className="navbar-item is-justify-content-flex-start" to="/">
-            <img src={`/images/GigIt-white-greendot.png`} alt="gigit logo" />
-          </Link>
-        </div>
-        <div className="navbar-menu is-flex-direction-row pl-10">
-          <div className="navbar-end is-align-items-center is-justify-content-space-between">
-            {showNavigation()}
-          </div>
-        </div>
+      <div className="navbar-brand">
+        <Link className="navbar-item is-justify-content-flex-start" to="/">
+          <img src={`/images/GigIt-white-greendot.png`} alt="gigit logo" />
+        </Link>
+      </div>
+      <div className="navbar-menu is-flex-direction-row">
+        {/* <div className="navbar-links is-align-items-center is-justify-content-space-between"> */}
+        {showNavigation()}
+        {/* </div> */}
       </div>
     </nav>
   );

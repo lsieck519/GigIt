@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import AuthService from "../../utils/auth";
-import { useQuery, useMutation } from '@apollo/client';
-import './About.css';
-import { GET_USER_PROFILE } from '../../utils/queries';
-import { UPDATE_ABOUT } from '../../utils/mutations';
+import { useQuery, useMutation } from "@apollo/client";
+import "./About.css";
+import { GET_USER_PROFILE } from "../../utils/queries";
+import { UPDATE_ABOUT } from "../../utils/mutations";
 
 const About = ({ userId, loggedInUserId }) => {
-  const [about, setAbout] = useState('');
+  const [about, setAbout] = useState("");
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
-    variables: { id: userId, loggedInUserId: AuthService.getProfile()?.data?._id },
+    variables: {
+      id: userId,
+      loggedInUserId: AuthService.getProfile()?.data?._id,
+    },
   });
 
   const [updateAbout] = useMutation(UPDATE_ABOUT);
@@ -19,10 +22,8 @@ const About = ({ userId, loggedInUserId }) => {
     }
   }, [data]);
 
-
-
   // when edit button is clicked, i want the about section to change into an editable section
-  // edit button should only be visible to the logged in user 
+  // edit button should only be visible to the logged in user
   // const handleEditAbout = () => {
 
   // }
@@ -31,7 +32,7 @@ const About = ({ userId, loggedInUserId }) => {
   // const handleAboutChange = (e) => {
   //   setAbout(e.target.value);
   // };
-  
+
   // when user clicks on save button, the new about data will be set
   // the save button replaces the edit button while in editing mode
   // after saving, the edit button replaces the save button
@@ -41,16 +42,12 @@ const About = ({ userId, loggedInUserId }) => {
     });
   };
 
-
   if (loading) return <p>Loading...</p>;
-  if (error)
-    return (
-      <p className="error">Error: {error.message}</p>
-    );
+  if (error) return <p className="error">Error: {error.message}</p>;
 
   const { firstName, lastName, profilepic } = data.user;
   const isCurrentUser = userId === loggedInUserId;
-  const canEditAbout = isCurrentUser && loggedInUserId !== '';
+  const canEditAbout = isCurrentUser && loggedInUserId !== "";
 
   return (
     <div className="about-content">
