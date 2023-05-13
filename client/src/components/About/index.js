@@ -8,8 +8,6 @@ import { UPDATE_ABOUT } from '../../utils/mutations';
 
 const About = ({ userId, loggedInUserId }) => {
   const [about, setAbout] = useState('');
-
-
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     variables: {
       id: userId,
@@ -46,6 +44,19 @@ const About = ({ userId, loggedInUserId }) => {
 
   return (
     <div className="about-content">
+      {canEditAbout && (
+        <>
+          <button className="button" id="editabout" onClick={handleFormSubmit}>
+            <img
+              src={'/images/pencil.png'}
+              alt="edit-icon"
+              className="edit-icon"
+            />{' '}
+            Edit About
+          </button>
+        </>
+      )}
+
       <div className="about-container">
         <h2 className="fullname">
           About {firstName} {lastName}
@@ -53,27 +64,6 @@ const About = ({ userId, loggedInUserId }) => {
         <p className="about-user">{about}</p>
       </div>
 
-      {canEditAbout && (
-        <>
-          <form onSubmit={handleFormSubmit}>
-            <div className="edit-about-container">
-              <input
-                placeholder="Edit your bio here"
-                value={about}
-                // this needs better styling
-                className="input"
-                onChange={(event) => setAbout(event.target.value)}
-              />
-            </div>
-            <div className="button-about">
-              <button className="button is-small is-light" type="submit">
-                Save
-              </button>
-            </div>
-            {error && <div className="something">Something went wrong...</div>}
-          </form>
-        </>
-      )}
     </div>
   );
 };

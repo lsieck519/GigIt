@@ -4,6 +4,7 @@
   justify-content: center;
   padding-left: 10%;
   padding-right: 10%;
+  margin-bottom: 10%;
 }
  .fullname { 
   font-size: 1.8em;
@@ -23,6 +24,12 @@
   height: auto;
   padding: 1%;
 } 
+
+#editabout {
+  color: black;
+  border-style: none;
+  margin-left: 65%;
+}
 
 .profile-image {
   width: 150px;
