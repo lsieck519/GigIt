@@ -37,7 +37,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    me: User
+    user(id: ID!, loggedInUserId: ID): User
   }
 
   # // mutations for later use of adding and updating a user

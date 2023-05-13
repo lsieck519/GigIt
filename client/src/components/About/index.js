@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AuthService from "../../utils/auth";
 import { useQuery, useMutation } from '@apollo/client';
 import './About.css';
 import { GET_USER_PROFILE } from '../../utils/queries';
@@ -7,14 +8,14 @@ import { UPDATE_ABOUT } from '../../utils/mutations';
 const About = ({ userId, loggedInUserId }) => {
   const [about, setAbout] = useState('');
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
-    variables: { userId },
+    variables: { id: userId, loggedInUserId: AuthService.getProfile()?.data?._id },
   });
 
   const [updateAbout] = useMutation(UPDATE_ABOUT);
 
   useEffect(() => {
-    if (data && data.me) {
-      setAbout(data.me.about);
+    if (data && data.user) {
+      setAbout(data.user.about);
     }
   }, [data]);
 
@@ -24,7 +25,7 @@ const About = ({ userId, loggedInUserId }) => {
 
   const handleSaveAbout = () => {
     updateAbout({
-      variables: { userId, about },
+      variables: { about },
     });
   };
 
@@ -34,7 +35,7 @@ const About = ({ userId, loggedInUserId }) => {
       <p className="error">Error: {error.message}</p>
     );
 
-  const { firstName, lastName } = data.me;
+  const { firstName, lastName } = data.user;
   const isCurrentUser = userId === loggedInUserId;
   const canEditAbout = isCurrentUser && loggedInUserId !== '';
 

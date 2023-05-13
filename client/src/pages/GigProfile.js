@@ -4,8 +4,6 @@ import { useQuery } from "@apollo/client";
 
 import { useParams } from "react-router-dom";
 import {GET_USER_PROFILE} from "../utils/queries";
-// import {GET_USER_GIGS} from "../utils/queries";
-// import Contact from "../components/Contact";
 
 import Card from "../components/Card";
 import About from "../components/About";
@@ -15,17 +13,21 @@ import Contact from "../components/Contact";
 // Create a page where we display gig information
 const GigProfile = () => {
   const { userId } = useParams();
-  const currentUserId = AuthService.getProfile()?._id;
+  const loggedInUser = AuthService.getProfile();
+  const loggedInUserId = loggedInUser?.data?._id;
+
+  console.log('loggedInUser:', loggedInUser);
+  console.log('loggedInUserId:', loggedInUserId);
 
   // Fetch the user profile by using the useQuery hook
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
-    variables: {id: userId },
+    variables: { id: userId, loggedInUserId: loggedInUserId },
   });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  const gigs = data?.me?.gigs ?? [] ;
+  const gigs = data?.user?.gigs ?? [] ;
 
   return (
    <>
@@ -34,12 +36,13 @@ const GigProfile = () => {
     </aside>
     <section className="section">
       <div className="container">
-        <About userId={userId} loggedInUserId={currentUserId} />
+        <About userId={userId} loggedInUserId={loggedInUserId} />
         {/* <Card userId={userId} loggedInUserId={currentUserId} /> */}
       </div>
     </section>
       {gigs.map((gig) => (
         <Card
+          key={gig._id}
           image={gig.image}
           title={gig.title}
           description={gig.description}

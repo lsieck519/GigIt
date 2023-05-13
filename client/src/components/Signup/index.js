@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 import './Signup.css';
 
 function Signup(props) {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
@@ -26,7 +28,10 @@ function Signup(props) {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    Auth.login(token, () => {
+      const userId = Auth.getProfile()?.data._id;
+      navigate(`/profile/${userId}`);
+    });
   };
 
   const handleChange = (event) => {

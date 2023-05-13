@@ -5,17 +5,21 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     // this finds one user and all of their gigs
-    me: async (parent, args, context) => {
-      console.log(context.user);
+    user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id);
-        console.log(user);
+        const { id } = args;
+        const {loggedInUserId} = context;
+
+        const user = id
+          ? await User.findOne({ _id: id })
+          : await User.findById(context.user._id);
+    
         return user;
       } else {
         console.log('Not logged in');
       }
     },
-  },
+  },    
 
   Mutation: {
     addUser: async (parent, args) => {

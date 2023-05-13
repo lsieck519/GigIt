@@ -3,8 +3,8 @@ import { gql } from '@apollo/client';
 // get all gigs to display in tiles on user's profile page
 
 export const GET_USER_PROFILE = gql`
-  query getUserProfile {
-    me {
+  query getUserProfile($id: ID!, $loggedInUserId: ID!) {
+    user(id: $id, loggedInUserId: $loggedInUserId) {
       _id
       firstName
       lastName
