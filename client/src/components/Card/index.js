@@ -5,12 +5,13 @@ import './Card.css';
 
 const Card = (props) => {
 return (
-<div className="card-item">
-<img src={props.image} alt={props.title} />
-  <h2 className="gigTitle">{props.title}</h2>
-  <p className="gigBody">{props.description}</p>
-  <p className="gigBody">Compensation: {props.compensation}</p>
-  <p className="gigBody">Years of Experience: {props.yearsExperience}</p>
+  <div className="card-item">
+    {/* <img src={props.image} alt={props.title} /> */}
+    <img src={props.image} class="gig-image" alt="..." />
+    <h2 className="gigTitle">{props.title}</h2>
+    <p className="gigBody">{props.description}</p>
+    <p className="gigBody">Compensation: {props.compensation}</p>
+    <p className="gigBody">Years of Experience: {props.yearsExperience}</p>
   </div>
 );
 };

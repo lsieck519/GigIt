@@ -19,15 +19,28 @@ const About = ({ userId, loggedInUserId }) => {
     }
   }, [data]);
 
-  const handleAboutChange = (e) => {
-    setAbout(e.target.value);
-  };
 
+
+  // when edit button is clicked, i want the about section to change into an editable section
+  // edit button should only be visible to the logged in user 
+  // const handleEditAbout = () => {
+
+  // }
+
+  // in the editable about section, i want the changes that the user types to be visible on screen in real time
+  // const handleAboutChange = (e) => {
+  //   setAbout(e.target.value);
+  // };
+  
+  // when user clicks on save button, the new about data will be set
+  // the save button replaces the edit button while in editing mode
+  // after saving, the edit button replaces the save button
   const handleSaveAbout = () => {
     updateAbout({
       variables: { about },
     });
   };
+
 
   if (loading) return <p>Loading...</p>;
   if (error)
@@ -35,7 +48,7 @@ const About = ({ userId, loggedInUserId }) => {
       <p className="error">Error: {error.message}</p>
     );
 
-  const { firstName, lastName } = data.user;
+  const { firstName, lastName, profilepic } = data.user;
   const isCurrentUser = userId === loggedInUserId;
   const canEditAbout = isCurrentUser && loggedInUserId !== '';
 
@@ -46,12 +59,15 @@ const About = ({ userId, loggedInUserId }) => {
           About {firstName} {lastName}
         </h2>
         <p className="about-user">{about}</p>
+        <img src={profilepic} class="profile-image" alt="..." />
       </div>
+
       {canEditAbout && (
         <>
-          <textarea value= { about } onChange={handleAboutChange} />
+          {/* <textarea value={about} onChange={handleAboutChange} /> */}
           <button className="button is-small" onClick={handleSaveAbout}>
-            Save
+            {/* this button does not work at all right now */}
+            Edit About
           </button>
         </>
       )}
