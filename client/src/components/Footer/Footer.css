@@ -1,3 +1,8 @@
 .footerText {
-    color: #228657;
+    color: #85BB65;
+}
+
+.footer-logo {
+    width: 40px;
+    padding-left: 4px;
 }
