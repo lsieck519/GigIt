@@ -34,21 +34,13 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const ADD_ABOUT = gql`
-  mutation addAbout($about: String!) {
-    addAbout(about: $about) {
-      user {
-        about
-      }
-    }
-  }
-`;
-
 export const UPDATE_ABOUT = gql`
   mutation updateAbout($about: String!) {
     updateAbout(about: $about) {
-      _id
-      about
+      user {
+        _id
+        about
+      }
     }
   }
 `;
