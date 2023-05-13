@@ -32,6 +32,12 @@ const userSchema = new Schema({
   about: {
     type: String,
   },
+  city: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
   profilepic: {
     type: String,
   },

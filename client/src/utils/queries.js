@@ -11,6 +11,8 @@ export const GET_USER_PROFILE = gql`
       username
       email
       about
+      city
+      state
       profilepic
       gigs {
         _id

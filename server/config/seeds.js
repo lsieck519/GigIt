@@ -12,6 +12,8 @@ db.once("open", async () => {
     about:
       "Hey there! I'm Pamela Washington, and lending a helping hand is my ultimate passion. Whether it's tending to children, delivering food, washing cars, caring for plants, or cleaning houses, I've gained experience in a range of areas. I'm always on the go, embracing an active lifestyle that keeps me energized. Learning is a constant pursuit for me, and I take pleasure in acquiring new skills and knowledge. Helping people brings me immense joy and fulfillment, and I strive to make a positive impact wherever I go. Let's work together to make the world a better place, one act of kindness at a time!",
     profilepic: "../images/pamela.jpeg",
+    city: "Miami",
+    state: "Florida",
     password: "password12345",
     gigs: [
       {
