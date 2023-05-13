@@ -5,7 +5,7 @@ import "./Contact.css";
 import { GET_USER_PROFILE } from "../../utils/queries";
 import { UPDATE_CONTACT } from "../../utils/mutations";
 
-const Contact = ({ userId, loggedInUserId }) => {
+const Contact = ({ userId, loggedInUserId, props }) => {
   const [contact, setContact] = useState("");
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     variables: {
@@ -28,7 +28,7 @@ const Contact = ({ userId, loggedInUserId }) => {
   // email
 
   // data?.me?.user.location
-  // data?.me?.socials.Github
+  const socials = data?.user?.socials ?? [];
 
   const handleSaveContact = () => {
     updateContact({
@@ -70,7 +70,18 @@ const Contact = ({ userId, loggedInUserId }) => {
             {firstName} {lastName}
           </h3>
           <li>
-            <a>{email}</a>
+            <a>
+              <div className="">
+                <div className="contact-item">
+                  <img
+                    src={`/images/email.png`}
+                    alt="email icon"
+                    className="contact-icon-email"
+                  />
+                  {email}
+                </div>
+              </div>
+            </a>
           </li>
           <li>
             <a>
@@ -133,7 +144,7 @@ const Contact = ({ userId, loggedInUserId }) => {
               <div className="">
                 <div className="contact-item">
                   <img
-                    src={`/images/`}
+                    src={`/images/github-mark-white.png`}
                     alt="github icon"
                     className="contact-icon"
                   />
@@ -146,10 +157,10 @@ const Contact = ({ userId, loggedInUserId }) => {
             <>
               {/* <textarea value={about} onChange={handleAboutC
               hange} /> */}
-              <button className="button is-small" onClick={handleSaveContact}>
+              <button className="button" onClick={handleSaveContact}>
                 {/* this button does not work at all right now */}
                 <img
-                  src={"/pencil.png"}
+                  src={"/images/pencil.png"}
                   alt="location pin"
                   className="edit-icon"
                 />{" "}

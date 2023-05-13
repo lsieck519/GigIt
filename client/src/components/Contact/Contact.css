@@ -15,6 +15,11 @@
   padding-left: 0;
 }
 
+.contact-icon-email {
+  height: 16px;
+  padding-right: 6px;
+}
+
 .contact-icon {
   height: 22px;
   padding-right: 6px;
@@ -31,9 +36,4 @@ h3 {
   border-color: #f1f1f1;
   border-radius: 15px;
   width: 90%;
-}
-
-.edit-icon {
-  height: 12px;
-  padding-right: 5px;
 }
