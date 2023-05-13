@@ -19,9 +19,9 @@ const About = ({ userId, loggedInUserId }) => {
     }
   }, [data]);
 
-  const handleAboutChange = (e) => {
-    setAbout(e.target.value);
-  };
+  // const handleAboutChange = (e) => {
+  //   setAbout(e.target.value);
+  // };
 
   const handleSaveAbout = () => {
     updateAbout({
@@ -46,12 +46,15 @@ const About = ({ userId, loggedInUserId }) => {
           About {firstName} {lastName}
         </h2>
         <p className="about-user">{about}</p>
+        <img src="../images/pamela.jpeg" class="pamela-image" alt="..." />
       </div>
+
       {canEditAbout && (
         <>
-          <textarea value= { about } onChange={handleAboutChange} />
+          {/* <textarea value={about} onChange={handleAboutChange} /> */}
           <button className="button is-small" onClick={handleSaveAbout}>
-            Save
+            {/* this button does not work at all right now */}
+            Edit About
           </button>
         </>
       )}

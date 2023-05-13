@@ -8,7 +8,7 @@
     
     width: 350px;
     
-    height: 350px;
+    height: auto;
     
     margin-left: auto;
     
@@ -30,4 +30,10 @@
     
     font-size: 1.5em
     
+    }
+
+    .gig-image {
+        width: 200px;
+        margin-left: 0%;
+        border-top-left-radius: 10%;
     }
