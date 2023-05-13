@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import AuthService from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
@@ -7,6 +8,7 @@ import { UPDATE_ABOUT } from '../../utils/mutations';
 
 const About = ({ userId, loggedInUserId }) => {
   const [about, setAbout] = useState('');
+
 
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     variables: {
@@ -23,6 +25,7 @@ const About = ({ userId, loggedInUserId }) => {
     }
   }, [data]);
 
+
   // currently getting 400 error when attempting to save about data
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -37,8 +40,9 @@ const About = ({ userId, loggedInUserId }) => {
   };
 
   const { firstName, lastName } = data.user;
+
   const isCurrentUser = userId === loggedInUserId;
-  const canEditAbout = isCurrentUser && loggedInUserId !== '';
+  const canEditAbout = isCurrentUser && loggedInUserId !== "";
 
   return (
     <div className="about-content">
