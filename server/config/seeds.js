@@ -11,8 +11,8 @@ db.once("open", async () => {
     username: 'pwash',
     email: 'pamela@testmail.com',
     about:
-      'Hey there! I\'m Pamela Washington, and lending a helping hand is my ultimate passion. Whether it\'s tending to children, delivering food, washing cars, caring for plants, or cleaning houses, I\'ve gained experience in a range of areas. I\'m always on the go, embracing an active lifestyle that keeps me energized. Learning is a constant pursuit for me, and I take pleasure in acquiring new skills and knowledge. Helping people brings me immense joy and fulfillment, and I strive to make a positive impact wherever I go. Let\'s work together to make the world a better place, one act of kindness at a time!',
-    image: 'pamela.jpeg',
+      "Hey there! I'm Pamela Washington, and lending a helping hand is my ultimate passion. Whether it's tending to children, delivering food, washing cars, caring for plants, or cleaning houses, I've gained experience in a range of areas. I'm always on the go, embracing an active lifestyle that keeps me energized. Learning is a constant pursuit for me, and I take pleasure in acquiring new skills and knowledge. Helping people brings me immense joy and fulfillment, and I strive to make a positive impact wherever I go. Let's work together to make the world a better place, one act of kindness at a time!",
+    profilepic: '../images/pamela.jpeg',
     password: 'password12345',
     gigs: [
       {
@@ -58,7 +58,7 @@ db.once("open", async () => {
           'As a plant caretaker, I possess a deep appreciation for nature and a green thumb. I am knowledgeable about various plant species and their specific care needs. With patience and nurturing, I ensure proper watering, pruning, and pest control. I am attentive to their growth, providing a thriving environment for plants to flourish under my watchful care.',
         image:
           'https://images.unsplash.com/photo-1566836610593-62a64888a216?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1077&q=80',
-        compensation: 'Let\'s discuss!',
+        compensation: "Let's discuss!",
         yearsExperience: 5,
       },
     ],
