@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 
+function loggedInUserId() {
+  if (Auth.loggedIn()) {
+    const user = Auth.getProfile();
+    return user.data._id;
+  }
+  return '';
+}
+
 function Nav() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
+
+  useEffect(() => {
+    const onAuthChange = () => {
+      setIsLoggedIn(Auth.loggedIn());
+    };
+
+    window.addEventListener("authChange", onAuthChange);
+
+    return () => {
+      window.removeEventListener("authChange", onAuthChange);
+    };
+  }, []);
+
   function showNavigation() {
-    if (Auth.loggedIn()) {
+    if (isLoggedIn) {
       return (
         <ul className="navbar-end">
           <li className="navbar-item">
-            <Link to="/profile">GigProfile</Link>
+            <Link to={`/profile/${loggedInUserId()}`}>GigProfile</Link>
           </li>
           <li className="navbar-item">
             <a href="/" onClick={() => Auth.logout()}>

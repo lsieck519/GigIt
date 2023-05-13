@@ -30,6 +30,10 @@ class AuthService {
   login(idToken, callback) {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
+
+    // Dispatch the authChange event to notify the Nav component
+    window.dispatchEvent(new Event("authChange"));
+
     if (callback){
       callback();
     } else {
@@ -40,6 +44,10 @@ class AuthService {
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");
+
+    // Dispatch the authChange event to notify the Nav component
+    window.dispatchEvent(new Event("authChange"));
+
     // this will reload the page and reset the state of the application
     window.location.assign("/");
   }
