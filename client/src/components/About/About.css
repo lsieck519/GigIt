@@ -1,28 +1,25 @@
-.about-user {
+.about-container {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-left: 20%;
-  padding-right: 10%;
+  padding-right: 20%;
 }
- .fullname {
-  justify-content: center;
-  align-items: center;
-  font-size: 2em;
+ .fullname { 
+  font-size: 1.8em;
   font-weight: lighter;
-  margin-top: 0%;
+  padding-right: 5%;
  }
 
 .about-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.error {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10%;
-  padding-right: 10%;
-}
+.about-content textarea {
+  width: 500px;
+  height: auto;
+  padding: 1%;
+} 

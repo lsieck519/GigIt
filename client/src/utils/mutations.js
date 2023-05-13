@@ -1,5 +1,4 @@
-import { gql } from "@apollo/client";
-
+import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
   mutation addUser(
@@ -35,57 +34,107 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const ADD_ABOUT = gql`
+  mutation addAbout($about: String!) {
+    addAbout(about: $about) {
+      user {
+        about
+      }
+    }
+  }
+`;
 
 export const UPDATE_ABOUT = gql`
-  mutation UpdateAbout($userId: ID!, $about: String!) {
-    updateAbout(id: $userId, about: $about) {
-      about
+  mutation updateAbout($about: String!) {
+    updateAbout(about: $about) {
+      user {
+        about
+      }
     }
   }
 `;
-
 
 export const ADD_GIG = gql`
-  mutation addGig($input: GigInput!) {
-    addGig(input: $input) {
-      _id
-      title
-      description
-      image
-      compensation
-      yearsExperience
+  mutation addGig(
+    $title: String!
+    $description: String
+    $image: String
+    $compensation: String
+    $yearsExperience: Int
+  ) {
+    addGig(
+      title: $title
+      description: $description
+      image: $image
+      compensation: $compensation
+      yearsExperience: $yearsExperience
+    ) {
+      user {
+        gigs {
+          _id
+          title
+          description
+          image
+          compensation
+          yearsExperience
+        }
+      }
     }
   }
 `;
-
 
 export const REMOVE_GIG = gql`
-  mutation removeGig($gigId: ID!) {
-    removeGig(gigId: $id) {
-      _id
-      title
-      description
-      image
-      compensation
-      yearsExperience
+  mutation removeGig($id: ID!) {
+    removeGig(id: $id) {
+      user {
+        gigs {
+          _id
+        }
+      }
     }
   }
 `;
 
-
-
-export const ADD_SOCIAL  = gql`
-  mutation addSocial($social: String!) {
-    addSocial(social: $social) {
-      _id
+export const ADD_SOCIAL = gql`
+  mutation addSocial(
+    $linkedIn: String
+    $instagram: String
+    $github: String
+    $facebook: String
+    $stackOverflow: String
+    $twitter: String
+  ) {
+    addSocial(
+      linkedIn: $linkedIn
+      instagram: $instagram
+      github: $github
+      facebook: $facebook
+      stackOverflow: $stackOverflow
+      twitter: $twitter
+    ) {
+      user {
+        socials {
+          _id
+          linkedIn
+          instagram
+          github
+          facebook
+          stackOverflow
+          twitter
+        }
+      }
     }
   }
 `;
 
-export const REMOVE_SOCIAL = gql`
-  mutation removeSocial($social: String!) {
-    removeSocial(social: $social) {
-      _id
+export const UPDATE_SOCIAL = gql`
+  mutation updateSocial($id: ID!) {
+    updateSocial(id: $id) {
+      user {
+        socials {
+          _id
+        }
+      }
     }
   }
 `;

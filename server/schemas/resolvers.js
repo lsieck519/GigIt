@@ -1,119 +1,135 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Gig, Social } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Gig, Social } = require('../models');
+const { signToken } = require('../utils/auth');
 
-// TODO: add resolvers!
 const resolvers = {
   Query: {
-    // finding one gig, changing it to find one gig with an id
-    gig: async (_parent, args, context) => {
-      //   // finding one gigs
-      //   return await Gig.find();
-      // },
-      const { id } = args;
-      return {
-        _id: 'asffhjasdf',
-        title: 'Awesome title',
-        description: 'Some description',
-        image: 'http://somelocation.com/image.png',
-        compensation: '1000',
-        yearsExperience: 2,
-      };
-    },
-
-    // TODO: Complete the below
     // this finds one user and all of their gigs
     me: async (parent, args, context) => {
       console.log(context.user);
-
       if (context.user) {
         const user = await User.findById(context.user._id);
         console.log(user);
-        // return {
-        //   _id: user._id,
-        //   firstName: user.firstName,
-        //   lastName: user.lastName,
-        //   username: user.username,
-        //   email: user.email,
-        //   about: user.about,
-        //   gigs: user.gigs,
-        //   socials: user.socials,
-        // };
         return user;
       } else {
-        console.log("Not logged in");
-      }
-    },
-
-    // finding all gigs for a user
-    userGigs: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id);
-        return {
-          _id: user._id,
-          gigs: user.gigs,
-        };
+        console.log('Not logged in');
       }
     },
   },
 
-  // throw new AuthenticationError("Not logged in");
-
   Mutation: {
-    // TODO: create addUser mutation
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },
 
-    // TODO: create updateUser mutation
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, {
-          new: true,
-        });
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-
-    // TODO: update login mutation
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const token = signToken(user);
-
       return { token, user };
     },
 
-    // TODO: addAbout mutation
-
-
-    // TODO: updateAbout mutation
-    updateAbout: (parent, { id, about }) => {
-      const user = user.find((user) => user.id === id);
-      if (!user) {
-        throw new Error(`User with id ${id} not found.`);
+    addAbout: async (parent, { about }, context) => {
+      if (!context.user) {
+        throw new Error('Authentication required.');
       }
-      user.about = about;
-      return user;
+      try {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { about } },
+          { new: true }
+        );
+        return user;
+      } catch (error) {
+        throw new Error('Failed to update user about.');
+      }
     },
 
-    // TODO: addGig mutation
+    updateAbout: async (parent, { about }, context) => {
+      if (!context.user) {
+        throw new Error('Authentication required.');
+      }
 
-    // TODO: updateGig mutation
+      try {
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { about } },
+          { new: true }
+        );
+        return user;
+      } catch (error) {
+        throw new Error('Failed to update user about.');
+      }
+    },
+
+    addGig: async (
+      parent,
+      { title, description, image, compensation, yearsExperience },
+      context
+    ) => {
+      if (!context.user) {
+        throw new Error('Authentication required.');
+      }
+
+      try {
+        const user = await User.findById(context.user._id);
+
+        const newGig = {
+          title,
+          description,
+          image,
+          compensation,
+          yearsExperience,
+        };
+
+        user.gigs.push(newGig);
+
+        await user.save();
+
+        return newGig;
+      } catch (error) {
+        throw new Error('Failed to add gig.');
+      }
+    },
+
+    addSocial: async (
+      parent,
+      { linkedIn, instagram, github, facebook, stackOverflow, twitter },
+      context
+    ) => {
+      if (!context.user) {
+        throw new Error('Authentication required.');
+      }
+
+      try {
+        const user = await User.findById(context.user._id);
+
+        const newSocial = {
+          linkedIn,
+          instagram,
+          github,
+          facebook,
+          stackOverflow,
+          twitter,
+        };
+
+        user.socials = newSocial;
+
+        await user.save();
+
+        return newSocial;
+      } catch (error) {
+        throw new Error('Failed to add social.');
+      }
+    },
   },
 };
 

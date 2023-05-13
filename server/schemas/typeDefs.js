@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Social {
@@ -38,21 +38,10 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user(id: ID!): User
-    gig(id: ID!): Gig
-    userGigs: User
   }
 
   # // mutations for later use of adding and updating a user
   type Mutation {
-    updateUser(
-      firstName: String!
-      lastName: String!
-      email: String!
-      username: String!
-      password: String!
-    ): User
-    login(email: String!, password: String!): Auth
     addUser(
       firstName: String!
       lastName: String!
@@ -60,10 +49,33 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    updateAbout(
-      id: ID!, 
-      about: String!): User
+    login(email: String!, password: String!): Auth
+    addAbout(about: String!): User
+    updateAbout(about: String!): User
+    addSocial(
+      linkedIn: String
+      instagram: String
+      github: String
+      facebook: String
+      stackOverflow: String
+      twitter: String
+    ): Social
+    addGig(
+      title: String
+      description: String
+      image: String
+      compensation: String
+      yearsExperience: Int
+    ): Gig
   }
 `;
 
 module.exports = typeDefs;
+
+// updateSocial(
+//  _id: ID!
+//   ): Social
+
+//   removeGig(
+//    _id: ID!
+//    ): Gig
