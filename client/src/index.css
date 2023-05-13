@@ -2,6 +2,18 @@ body {
   font-family: 'League Spartan', sans-serif;
 }
 
+.button {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  margin: 2px;
+  margin-left: 0px;
+  margin-top: 6px;
+}
+
+.edit-icon {
+  height: 16px;
+  padding-right: 5px;
+}
 
   /* 
   font-family: 'League Spartan', sans-serif;
@@ -9,3 +21,7 @@ body {
   opacity: .6;
   color: black; 
   */
+
+.menu {
+  background-color: #43ac7b;
+}
