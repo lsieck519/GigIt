@@ -41,7 +41,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<GigProfile />} />
+            <Route path="/profile/:userId" element={<GigProfile />} getKey={(params) => params.userId} />
           </Routes>
           {/* </GigProvider> */}
         </div>
