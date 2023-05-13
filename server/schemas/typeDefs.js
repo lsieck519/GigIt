@@ -28,6 +28,8 @@ const typeDefs = gql`
     email: String
     about: String
     profilepic: String
+    city: String
+    state: String
     gigs: [Gig]
     socials: [Social]
   }
