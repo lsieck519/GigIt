@@ -1,54 +1,162 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import AuthService from "../../utils/auth";
+import { useQuery, useMutation } from "@apollo/client";
 import "./Contact.css";
-// import { GET_USER } from "../../utils/queries";
+import { GET_USER_PROFILE } from "../../utils/queries";
+import { UPDATE_CONTACT } from "../../utils/mutations";
 
-// takes in the props for me?.data?.social.(the social here)
+const Contact = ({ userId, loggedInUserId }) => {
+  const [contact, setContact] = useState("");
+  const { loading, error, data } = useQuery(GET_USER_PROFILE, {
+    variables: {
+      id: userId,
+      loggedInUserId: AuthService.getProfile()?.data?._id,
+    },
+  });
 
-// Name
-// USerName
-// email
+  const [updateContact] = useMutation(UPDATE_CONTACT);
 
-// data?.me?.user.location
-// data?.me?.socials.Github
+  useEffect(() => {
+    if (data && data.user) {
+      setContact(data.user.contact);
+    }
+  }, [data]);
+  // takes in the props for me?.data?.social.(the social here)
 
-const Contact = (props) => {
+  // Name
+  // USerName
+  // email
+
+  // data?.me?.user.location
+  // data?.me?.socials.Github
+
+  const handleSaveContact = () => {
+    updateContact({
+      variables: { contact },
+    });
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p className="error">Error: {error.message}</p>;
+
+  const {
+    firstName,
+    lastName,
+    email,
+    city,
+    state,
+    linkedIn,
+    instagram,
+    github,
+    facebook,
+    stackOverflow,
+    twitter,
+  } = data.user;
+  const isCurrentUser = userId === loggedInUserId;
+  const canEditContact = isCurrentUser && loggedInUserId !== "";
+
   return (
-    <div className="sidebar">
-      <aside className="menu">
-        <ul className="menu-list">
+    <div className="contact">
+      <div className="is-flex is-justify-content-center pt-4 pr-4 pb-4">
+        <img
+          src={"/images/pamela.jpeg"}
+          alt="location pin"
+          className="user-image"
+        />
+      </div>
+      <aside className="container">
+        <ul className="contact-items">
+          <h3 className="is-size-3">
+            {firstName} {lastName}
+          </h3>
           <li>
-            <a>
-              First Last
-              {props.firstName} {props.lastName}
-            </a>
-          </li>
-          <li>
-            <a>email</a>
+            <a>{email}</a>
           </li>
           <li>
             <a>
               <div className="">
-                <img
-                  src={`./images/location.png`}
-                  alt="gigit logo"
-                  width="15px"
-                />
+                <div className="contact-item">
+                  <img
+                    src={`/images/location.png`}
+                    alt="location icon"
+                    className="contact-icon"
+                  />
+                  {city}, {state}
+                </div>
               </div>
-              <div>City, ST</div>
             </a>
           </li>
           <li>
-            <a>linkedIn</a>
+            <a className="contact-link">
+              <div className="">
+                <div className="contact-item">
+                  <img
+                    src={`/images/linkedIn.png`}
+                    alt="linkedIn icon"
+                    className="contact-icon"
+                  />
+                  {linkedIn}
+                </div>
+              </div>
+            </a>
           </li>
           <li>
-            <a>Instagram</a>
+            <a className="contact-link">
+              <div className="">
+                <div className="contact-item">
+                  <img
+                    src={`/images/Instagram_Glyph_White.png`}
+                    alt="instagram icon"
+                    className="contact-icon"
+                  />
+                  {instagram}
+                </div>
+              </div>
+            </a>
           </li>
           <li>
-            <a>Facebook</a>
+            <a className="contact-link">
+              <div className="">
+                <div className="contact-item">
+                  <img
+                    src={`/images/f_logo_RGB-White_72.png`}
+                    alt="facebook icon"
+                    className="contact-icon"
+                  />
+                  {facebook}
+                </div>
+              </div>
+            </a>
           </li>
           <li>
-            <a>Github</a>
+            <a className="contact-link">
+              <div className="">
+                <div className="contact-item">
+                  <img
+                    src={`/images/`}
+                    alt="github icon"
+                    className="contact-icon"
+                  />
+                  {github}
+                </div>
+              </div>
+            </a>
           </li>
+          {canEditContact && (
+            <>
+              {/* <textarea value={about} onChange={handleAboutC
+              hange} /> */}
+              <button className="button is-small" onClick={handleSaveContact}>
+                {/* this button does not work at all right now */}
+                <img
+                  src={"/pencil.png"}
+                  alt="location pin"
+                  className="edit-icon"
+                />{" "}
+                Edit
+              </button>
+            </>
+          )}
         </ul>
       </aside>
     </div>

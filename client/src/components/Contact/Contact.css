@@ -1,4 +1,39 @@
-.sidebar {
-  background-color: #228657;
-  color: #f1f1f1;
+.contact-items a {
+  color: white;
+  font-size: 18px;
+}
+
+.contact-items {
+  padding: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 8px;
+  padding-left: 0;
+}
+
+.contact-icon {
+  height: 22px;
+  padding-right: 6px;
+}
+
+h3 {
+  color: white;
+  /* font-size: 24px; */
+}
+
+.user-image {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f1f1f1;
+  border-radius: 15px;
+  width: 90%;
+}
+
+.edit-icon {
+  height: 12px;
+  padding-right: 5px;
 }

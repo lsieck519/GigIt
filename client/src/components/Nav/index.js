@@ -8,11 +8,10 @@ function loggedInUserId() {
     const user = Auth.getProfile();
     return user.data._id;
   }
-  return '';
+  return "";
 }
 
 function Nav() {
-
   const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
 
   useEffect(() => {
@@ -57,7 +56,7 @@ function Nav() {
       <div className="container m-0 pl-5">
         <div className="navbar-brand">
           <Link className="navbar-item is-justify-content-flex-start" to="/">
-            <img src={`/GigIt-white-greendot.png`} alt="gigit logo" />
+            <img src={`/images/GigIt-white-greendot.png`} alt="gigit logo" />
           </Link>
         </div>
         <div className="navbar-menu is-flex-direction-row pl-10">
