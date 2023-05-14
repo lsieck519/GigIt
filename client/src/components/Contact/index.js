@@ -55,9 +55,12 @@ const Contact = ({ userId, loggedInUserId }) => {
     <div className="contact">
       <div className="is-flex is-justify-content-center pt-4 pr-4 pb-4">
         <img
-          src={"/images/pamela.jpeg"}
-          alt="location pin"
+          src={`/images/${firstName}.jpeg`}
+          alt="profile"
           className="user-image"
+          onError={(e) => {
+            e.target.src = "/images/default.png";
+          }}
         />
       </div>
       <aside className="container">
