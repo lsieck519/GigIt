@@ -30,9 +30,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 500px;
-  height: 250px;
-  margin-bottom: 10%;
+  width: 600px;
+  height: 160px;
+  margin-bottom: 4%;
   font-family: 'League Spartan', sans-serif;
 } 
 
@@ -44,9 +44,8 @@
 #editabout, #editsection {
   color: black;
   border-style: none;
-  margin-left: 75%;
-  background-color: white;
-}
+  margin-left: 80%;
+} 
 
 .edit-button {
   color: black;
@@ -56,18 +55,10 @@
 .edit-button:hover {
   color: black;
   border-style: solid;
-
 }
-
 
 @media only screen and (max-width: 800px) {
 .fullname {
   display: none;
   }
 }
-
-/* @media only screen and (max-width: 900px) {
-.pamela-image {
-  display: none;
-  }
-} */
