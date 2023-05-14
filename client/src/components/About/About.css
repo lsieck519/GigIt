@@ -6,6 +6,7 @@
   padding-right: 10%;
   margin-bottom: 10%;
 }
+
  .fullname { 
   font-size: 1.8em;
   font-weight: lighter;
@@ -25,16 +26,39 @@
   padding: 1%;
 } 
 
-#editabout {
-  color: black;
-  border-style: none;
-  margin-left: 65%;
+#editaboutfield {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 250px;
+  margin-bottom: 10%;
+  font-family: 'League Spartan', sans-serif;
+} 
+
+.edit-about-input{
+  padding: 0%;
+  margin: 0%;
 }
 
-.profile-image {
-  width: 150px;
-  border-radius: 50%;
+#editabout, #editsection {
+  color: black;
+  border-style: none;
+  margin-left: 75%;
+  background-color: white;
 }
+
+.edit-button {
+  color: black;
+  border-style: solid;
+}
+
+.edit-button:hover {
+  color: black;
+  border-style: solid;
+
+}
+
 
 @media only screen and (max-width: 800px) {
 .fullname {
@@ -42,8 +66,8 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
 .pamela-image {
   display: none;
   }
-}
+} */
