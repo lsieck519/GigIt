@@ -24,7 +24,6 @@ const About = ({ userId, loggedInUserId }) => {
 
   const [updateAbout] = useMutation(UPDATE_ABOUT);
 
-
   const handleAboutChange = (e) => {
     setEditedAbout(e.target.value);
   };
@@ -33,15 +32,24 @@ const About = ({ userId, loggedInUserId }) => {
     event.preventDefault();
     try {
       const { data } = await updateAbout({
-        variables: { about: editedAbout }, 
+        variables: { about: editedAbout },
       });
-      setAbout(editedAbout); 
-      setEditMode(false); 
+      setAbout(editedAbout);
+      setEditMode(false);
     } catch (err) {
       console.error('Unable to update about');
     }
   };
 
+  const handleEditClick = () => {
+    setEditedAbout(about);
+    setEditMode(true);
+  };
+
+  const handleCancelClick = () => {
+    setEditedAbout(about);
+    setEditMode(false);
+  };
 
   const { firstName, lastName } = data.user;
 
@@ -52,11 +60,7 @@ const About = ({ userId, loggedInUserId }) => {
     <div className="about-content">
       {canEditAbout && !editMode && (
         <>
-          <button
-            className="button"
-            id="editabout"
-            onClick={() => setEditMode(true)}
-          >
+          <button className="button" id="editabout" onClick={handleEditClick}>
             <img
               src={'/images/pencil.png'}
               alt="edit-icon"
@@ -75,14 +79,11 @@ const About = ({ userId, loggedInUserId }) => {
             </h2>
             <form onSubmit={handleFormSubmit}>
               <div className="edit-section" id="editsection">
-                <button
-                  type="submit"
-                  className="edit-button button is-small"
-                >
+                <button type="submit" className="edit-button button is-small">
                   Save
                 </button>
                 <button
-                  onClick={() => setEditMode(false)}
+                  onClick={handleCancelClick}
                   className="edit-button button is-small"
                 >
                   Cancel
