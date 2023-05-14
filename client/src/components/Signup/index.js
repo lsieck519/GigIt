@@ -44,9 +44,13 @@ function Signup(props) {
 
   return (
     <div className="signup-form card">
-      <div className="card-content" id="gigStarted">
-        <p className="noaccount">Don't have an account?</p>
-        <h2 className="gigstartedtitle">GigStarted</h2>
+      <div className="card-content is-flex-column">
+        <p className="noaccount is-justify-content-center">
+          Don't have an account?
+        </p>
+        <h2 className="gigstartedtitle" id="GigIn">
+          GigStarted
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="first-input">
             <input
@@ -95,7 +99,7 @@ function Signup(props) {
           </div>
           <div className="submit-signup">
             <button className="button is-small" type="submit">
-              Submit
+              GigStarted
             </button>
           </div>
         </form>
