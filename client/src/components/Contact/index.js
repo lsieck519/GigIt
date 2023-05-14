@@ -3,9 +3,9 @@ import AuthService from "../../utils/auth";
 import { useQuery, useMutation } from "@apollo/client";
 import "./Contact.css";
 import { GET_USER_PROFILE } from "../../utils/queries";
-import { UPDATE_CONTACT } from "../../utils/mutations";
+import { UPDATE_SOCIAL } from "../../utils/mutations";
 
-const Contact = ({ userId, loggedInUserId, props }) => {
+const Contact = ({ userId, loggedInUserId }) => {
   const [contact, setContact] = useState("");
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     variables: {
@@ -14,7 +14,7 @@ const Contact = ({ userId, loggedInUserId, props }) => {
     },
   });
 
-  const [updateContact] = useMutation(UPDATE_CONTACT);
+  const [updateContact] = useMutation(UPDATE_SOCIAL);
 
   useEffect(() => {
     if (data && data.user) {
@@ -23,6 +23,7 @@ const Contact = ({ userId, loggedInUserId, props }) => {
   }, [data]);
 
   const socials = data?.user?.socials ?? [];
+  console.log(socials);
 
   const handleSaveContact = () => {
     updateContact({
@@ -39,12 +40,12 @@ const Contact = ({ userId, loggedInUserId, props }) => {
     email,
     city,
     state,
-    linkedIn,
-    instagram,
-    github,
-    facebook,
-    stackOverflow,
-    twitter,
+    // linkedIn,
+    // instagram,
+    // github,
+    // facebook,
+    // stackOverflow,
+    // twitter,
   } = data.user;
   const isCurrentUser = userId === loggedInUserId;
   const canEditContact = isCurrentUser && loggedInUserId !== "";

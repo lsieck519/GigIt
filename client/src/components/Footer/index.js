@@ -16,7 +16,11 @@ const Footer = () => {
     >
       <p className="footerText is-flex is-justify-content-center is-align-items-center">
         © 2023{" "}
-        <img src={`/images/GigIt.png`} alt="gigit logo" class="footer-logo" />
+        <img
+          src={`/images/GigIt.png`}
+          alt="gigit logo"
+          className="footer-logo"
+        />
       </p>
     </footer>
   );

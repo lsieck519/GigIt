@@ -45,15 +45,6 @@ export const UPDATE_ABOUT = gql`
   }
 `;
 
-export const UPDATE_CONTACT = gql`
-  mutation updateContact($contact: String!) {
-    updateContact(contact: $contact) {
-      _id
-      
-    }
-  }
-`;
-
 export const ADD_GIG = gql`
   mutation addGig(
     $title: String!
