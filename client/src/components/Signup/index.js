@@ -14,24 +14,29 @@ function Signup(props) {
     email: "",
     password: "",
   });
-  const [addUser] = useMutation(ADD_USER);
+
+  const [addUser, {error}] = useMutation(ADD_USER);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        username: formState.username,
-        email: formState.email,
-        password: formState.password,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token, () => {
-      const userId = Auth.getProfile()?.data._id;
-      navigate(`/profile/${userId}`);
-    });
+    try {
+      const mutationResponse = await addUser({
+        variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          username: formState.username,
+          email: formState.email,
+          password: formState.password,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token, () => {
+        const userId = Auth.getProfile()?.data._id;
+        navigate(`/profile/${userId}`);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (event) => {
@@ -95,6 +100,15 @@ function Signup(props) {
               onChange={handleChange}
             />
           </div>
+
+          {error ? (
+            <div>
+              <p className="cred-error">
+                Please fill in all fields! 
+              </p>
+            </div>
+          ) : null}
+
           <div className="submit-signup p-0 m-0 is-flex">
             <button className="button is-justify-content-center" type="submit">
               GigStarted
