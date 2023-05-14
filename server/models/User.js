@@ -46,7 +46,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  // change socials simialr to gigSchema 
   gigs: [gigSchema],
   socials: [socialSchema],
 });
