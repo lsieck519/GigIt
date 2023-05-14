@@ -37,10 +37,8 @@ export const LOGIN_USER = gql`
 export const UPDATE_ABOUT = gql`
   mutation updateAbout($about: String!) {
     updateAbout(about: $about) {
-      user {
         _id
         about
-      }
     }
   }
 `;
