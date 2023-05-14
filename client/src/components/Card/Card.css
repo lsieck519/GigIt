@@ -1,6 +1,6 @@
-.card-item {
+.tile {
 
-    background-color: #228657;
+    background-color: white;
     
     opacity: .7;
     
@@ -20,20 +20,30 @@
     
     .gigTitle {
     
-    font-size: 2em
+    font-size: 2em;
+    
+    color: #ffffff;
+    
+    }
+    
+    .gigbody {
+    
+    font-size: 1.5em;
     
     }
     
       
     
-    .gigbody {
-    
-    font-size: 1.5em
-    
-    }
-
     .gig-image {
-        width: 200px;
-        margin-left: 0%;
-        border-top-left-radius: 10%;
+    
+    width: 200px;
+    
+    /* margin-left: 20px;
+    
+    margin-top: 20px; */
+    
+    border-radius: 5%;
+    
+    box-shadow: inset;
+    
     }

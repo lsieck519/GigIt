@@ -26,7 +26,7 @@ const About = ({ userId, loggedInUserId }) => {
 
 
   const handleAboutChange = (e) => {
-    setAbout(e.target.value);
+    setEditedAbout(e.target.value);
   };
 
   const handleFormSubmit = async (event) => {
@@ -38,11 +38,6 @@ const About = ({ userId, loggedInUserId }) => {
       setAbout(editedAbout); 
       setEditMode(false); 
     } catch (err) {
-
-      //since i know an error will occur due to bug, 
-      //im including reload so the page goes back to pre - editing
-      window.location.reload();
-
       console.error('Unable to update about');
     }
   };
@@ -82,9 +77,6 @@ const About = ({ userId, loggedInUserId }) => {
               <div className="edit-section" id="editsection">
                 <button
                   type="submit"
-                  // if we want to make it look like it saved for demo purposes, uncomment onClick
-                  // the issue is that the db isnt actually updated and refreshing page reverts any "changes"
-                  // onClick={() => setEditMode(false)}
                   className="edit-button button is-small"
                 >
                   Save
@@ -99,7 +91,7 @@ const About = ({ userId, loggedInUserId }) => {
               <textarea
                 className="edit-about-input input"
                 id="editaboutfield"
-                value={about}
+                value={editedAbout}
                 onChange={handleAboutChange}
               />
             </form>
