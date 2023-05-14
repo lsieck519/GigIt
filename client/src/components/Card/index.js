@@ -1,19 +1,41 @@
 import React from "react";
 import "./Card.css";
 // import { GET_USER_GIGS } from "../../utils/queries";
-// import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";  
 
 const Card = (props) => {
-  return (
-    <div className="card-item">
-      {/* <img src={props.image} alt={props.title} /> */}
-      <img src={props.image} class="gig-image" alt="..." />
-      <h2 className="gigTitle">{props.title}</h2>
-      <p className="gigBody">{props.description}</p>
-      <p className="gigBody">Compensation: {props.compensation}</p>
-      <p className="gigBody">Years of Experience: {props.yearsExperience}</p>
-    </div>
-  );
+
+const tileStyle = {
+
+color: "white",
+
+backgroundColor: "#83bb63",
+
+padding: "10px",
+
+fontFamily: "Arial"
+
+};
+
+return (
+<div style={tileStyle} className="child is-child box">
+
+{/* <img src={props.image} alt={props.title} /> */}
+
+<img src={props.image} className="gig-image" alt="..." />
+
+<h2 className="gigTitle">{props.title}</h2>
+
+<p className="gigBody">{props.description}</p>
+
+<p className="gigBody">Compensation: {props.compensation}</p>
+
+<p className="gigBody">Years of Experience: {props.yearsExperience}</p>
+
+</div>
+
+);
+
 };
 
 export default Card;
