@@ -65,19 +65,19 @@ db.once("open", async () => {
     ],
     socials: [
       {
-        linkedIn: "linkedin.com/pamwash",
+        linkedIn: "pamwash",
       },
       {
-        instagram: "instagram.com/pamwash1",
+        instagram: "pamwash1",
       },
       {
-        facebook: "facebook.com/pamwashington",
+        facebook: "pamwashington",
       },
       {
-        stackOverflow: "stackoverflow.com/pamcodes",
+        stackOverflow: "pamcodes",
       },
       {
-        github: "github.com/pamcodes",
+        github: "pamcodes",
       },
     ],
   });
