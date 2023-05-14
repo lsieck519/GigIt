@@ -7,16 +7,16 @@ import Footer from "../components/Footer";
 function Home(props) {
   return (
     <div>
-      <div className="hero is-fullheight">
+      <div className="hero is-fullheight is-flex">
         <Hero />
       </div>
       <section className="section">
-        <div className="container">
+        <div className="container home-page mb-6">
           <div className="columns is-centered">
-            <div className="column is-half">
+            <div className="column is-half is-flex is-justify-content-center">
               <Login />
             </div>
-            <div className="column is-half" id="signUp">
+            <div className="column is-half is-flex is-justify-content-center">
               <Signup />
             </div>
           </div>

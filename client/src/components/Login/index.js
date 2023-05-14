@@ -65,7 +65,7 @@ function Login(props) {
             </div>
           ) : null}
 
-          <button className="button is-small" type="submit">
+          <button className="button" type="submit">
             GigIn
           </button>
         </form>

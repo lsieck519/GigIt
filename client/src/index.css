@@ -1,5 +1,7 @@
 body {
   font-family: 'League Spartan', sans-serif;
+  background-image: linear-gradient(white, #84bb6557);
+  /* background-color: hsl(152, 44%, 47%); */
 }
 
 .button {
@@ -13,6 +15,10 @@ body {
 .edit-icon {
   height: 16px;
   padding-right: 5px;
+}
+
+input {
+  width: 100%;
 }
 
   /* 
@@ -31,3 +37,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.home-page{
+  width: 70%;
+}
+
+
+

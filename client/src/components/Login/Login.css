@@ -1,24 +1,20 @@
 .login-form {
   background-color: #43ac7b;
   color: white;
-  width: 350px;
-  height: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.login-form form {
-  margin-left: 25%;
+  display: flex;
+  width: 95%;
+  height: 450px;
+  justify-content: center;
+  align-items:center;
 }
 
 .gigintitle {
-  font-size: 2em;
-  margin-left: 35%;
-  margin-top: 20%;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
 }
 
 .login-form .button {
-  margin-left: 20%;
   background-color: #228657;
   border-color: #228657;
   color: white;
@@ -36,5 +32,5 @@
 }
 
 .card {
-  border-radius: 10%;
+  border-radius: 20px;
 }
