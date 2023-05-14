@@ -21,13 +21,7 @@ const Contact = ({ userId, loggedInUserId, props }) => {
       setContact(data.user.contact);
     }
   }, [data]);
-  // takes in the props for me?.data?.social.(the social here)
 
-  // Name
-  // USerName
-  // email
-
-  // data?.me?.user.location
   const socials = data?.user?.socials ?? [];
 
   const handleSaveContact = () => {
@@ -78,7 +72,7 @@ const Contact = ({ userId, loggedInUserId, props }) => {
                     alt="email icon"
                     className="contact-icon-email"
                   />
-                  {email}
+                  <a href={`mailto:${email}`}>{email}</a>
                 </div>
               </div>
             </a>
@@ -92,7 +86,11 @@ const Contact = ({ userId, loggedInUserId, props }) => {
                     alt="location icon"
                     className="contact-icon"
                   />
-                  {city}, {state}
+                  <a
+                    href={`https://www.google.com/maps/place/${city},+${state}`}
+                  >
+                    {city}, {state}
+                  </a>
                 </div>
               </div>
             </a>
@@ -106,7 +104,9 @@ const Contact = ({ userId, loggedInUserId, props }) => {
                     alt="linkedIn icon"
                     className="contact-icon"
                   />
-                  {linkedIn}
+                  <a href={`https://linkedin.com/${socials[0].linkedIn}`}>
+                    {socials[0].linkedIn}
+                  </a>
                 </div>
               </div>
             </a>
@@ -120,7 +120,9 @@ const Contact = ({ userId, loggedInUserId, props }) => {
                     alt="instagram icon"
                     className="contact-icon"
                   />
-                  {instagram}
+                  <a href={`https://instagram.com/${socials[1].instagram}`}>
+                    {socials[1].instagram}
+                  </a>
                 </div>
               </div>
             </a>
@@ -134,12 +136,14 @@ const Contact = ({ userId, loggedInUserId, props }) => {
                     alt="facebook icon"
                     className="contact-icon"
                   />
-                  {facebook}
+                  <a href={`https://facebook.com/${socials[2].facebook}`}>
+                    {socials[2].facebook}
+                  </a>
                 </div>
               </div>
             </a>
           </li>
-          <li>
+          {/* <li>
             <a className="contact-link">
               <div className="">
                 <div className="contact-item">
@@ -152,7 +156,7 @@ const Contact = ({ userId, loggedInUserId, props }) => {
                 </div>
               </div>
             </a>
-          </li>
+          </li> */}
           {canEditContact && (
             <>
               {/* <textarea value={about} onChange={handleAboutC
