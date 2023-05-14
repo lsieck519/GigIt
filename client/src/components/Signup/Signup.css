@@ -1,36 +1,45 @@
 .signup-form {
-  background-color: #228657;
-  opacity: .7;
+  background-color: #43ac7b;
   color: white;
-  width: 350px;
-  height: 350px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items:center;
 }
 
-.signup-form form {
-  margin-left: 25%;
+.card {
+  border-radius: 25px;
 }
 
-.signup-form .noaccount {
+.noaccount {
   font-size: 1em;
-  margin-left: 25%;
   margin-top: 10%;
+  display: flex;
+  justify-content: center;
 }
 
 .gigstartedtitle {
-  font-size: 2em;
-  margin-left: 25%;
+  font-size: 3em;
+  /* display: flex;
+  justify-content: center; */
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  margin: 2px;
 }
 
 .signup-form .button {
-  margin-left: 20%;
   background-color: #228657;
   border-color: #228657;
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .signup-form .button:hover {
   border-color: #228657;
   color: white;
 }
+

@@ -27,6 +27,16 @@ function Nav() {
   }, []);
 
   function showNavigation() {
+    const handleClickScroll = () => {
+      const gigIn = document.getElementById("GigIn");
+      if (gigIn) {
+        gigIn.scrollIntoView({ behavior: "smooth" });
+      }
+      const gigStarted = document.getElementById("GigStarted");
+      if (gigStarted) {
+        gigStarted.scrollIntoView({ behavior: "smooth" });
+      }
+    };
     if (isLoggedIn) {
       return (
         <ul className="navbar-end">
@@ -44,7 +54,14 @@ function Nav() {
       return (
         <ul className="navbar-end">
           <li className="navbar-item">
-            <Link to="/">GigStarted</Link>
+            <Link onClick={handleClickScroll} to="/">
+              GigIn
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link onClick={handleClickScroll} to="/">
+              GigStarted
+            </Link>
           </li>
         </ul>
       );

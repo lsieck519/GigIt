@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import Auth from '../../utils/auth';
-import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
-import './Login.css';
+import React, { useState } from "react";
+import Auth from "../../utils/auth";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations";
+import "./Login.css";
 
 function Login(props) {
   const navigate = useNavigate();
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleSubmit = async (event) => {
@@ -37,7 +37,9 @@ function Login(props) {
   return (
     <div className="login-form card">
       <div className="card-content">
-        <h2 className="gigintitle">GigIn</h2>
+        <h2 className="gigintitle" id="GigIn">
+          GigIn
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="email-input">
             <input
@@ -63,8 +65,8 @@ function Login(props) {
             </div>
           ) : null}
 
-          <button className="button is-small" type="submit">
-            Submit
+          <button className="button" type="submit">
+            GigIn
           </button>
         </form>
       </div>
