@@ -40,13 +40,14 @@ const Contact = ({ userId, loggedInUserId }) => {
     email,
     city,
     state,
-    // linkedIn,
-    // instagram,
-    // github,
-    // facebook,
-    // stackOverflow,
-    // twitter,
+    linkedIn,
+    instagram,
+    github,
+    facebook,
+    stackOverflow,
+    twitter,
   } = data.user;
+
   const isCurrentUser = userId === loggedInUserId;
   const canEditContact = isCurrentUser && loggedInUserId !== "";
 
@@ -105,8 +106,8 @@ const Contact = ({ userId, loggedInUserId }) => {
                     alt="linkedIn icon"
                     className="contact-icon"
                   />
-                  <a href={`https://linkedin.com/${socials[0].linkedIn}`}>
-                    {socials[0].linkedIn}
+                  <a href={`https://linkedin.com/${socials[0]?.linkedIn}`}>
+                    {socials[0]?.linkedIn}
                   </a>
                 </div>
               </div>
@@ -121,8 +122,8 @@ const Contact = ({ userId, loggedInUserId }) => {
                     alt="instagram icon"
                     className="contact-icon"
                   />
-                  <a href={`https://instagram.com/${socials[1].instagram}`}>
-                    {socials[1].instagram}
+                  <a href={`https://instagram.com/${socials[1]?.instagram}`}>
+                    {socials[1]?.instagram}
                   </a>
                 </div>
               </div>
@@ -137,8 +138,8 @@ const Contact = ({ userId, loggedInUserId }) => {
                     alt="facebook icon"
                     className="contact-icon"
                   />
-                  <a href={`https://facebook.com/${socials[2].facebook}`}>
-                    {socials[2].facebook}
+                  <a href={`https://facebook.com/${socials[2]?.facebook}`}>
+                    {socials[2]?.facebook}
                   </a>
                 </div>
               </div>
