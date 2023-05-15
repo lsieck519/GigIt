@@ -35,7 +35,8 @@ With GigIt, you can build connections and earn money doing what you love. So, wh
 
 By navigating to the [deployed app](deployed_app_link_here), you can sign up by using the GigStarted form at the bottom of the page. Once your account is created, you will automatically be navigated to your personal GigProfile where you can edit your contact and about sections, and start adding your first Gig!
 
-![GigIt Homepage](/client/public/images/{insert-image-name-here}.jpg)
+![GigIt Homepage](/client/public/images/homepage-screenshot.png)
+![GigIt Homepage 2](/client/public/images/homepage-screenshot2.png)
 ![GigProfile](/client/public/images/{insert-image-name-here}.jpg)
 
 ## **_Installation_**
@@ -58,10 +59,10 @@ By navigating to the [deployed app](deployed_app_link_here), you can sign up by 
 
 Follow The GigIt Team on Github to stay up to date with their current projects:
 
-[Laura Sieck](https://github.com/lsieck519)
-[Nikki Dallich](https://github.com/ndallich1)
-[Corbin](https://github.com/cxrstings)
-[Mary Webby](https://github.com/marywebby)
+- [Laura Sieck](https://github.com/lsieck519)
+- [Nikki Dallich](https://github.com/ndallich1)
+- [Corbin Johns](https://github.com/cxrstings)
+- [Mary Webby](https://github.com/marywebby)
 
 ## **_License_**
 

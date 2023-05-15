@@ -1,22 +1,26 @@
 .about-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10%;
-  padding-right: 10%;
-  margin-bottom: 10%;
+  align-items: start;
+  flex-direction: column;
+  justify-content: start;
+  padding-right: 5%;
+  padding-left: 0px;
+  padding-bottom: 1%;
+  margin-bottom: 5%;
+  margin-left: 0px;
 }
 
  .fullname { 
-  font-size: 1.8em;
-  font-weight: lighter;
+  color: #85BB65;
+  font-size: 32px;
+  font-weight: 600;
   padding-right: 5%;
  }
 
 .about-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   flex-direction: column;
 }
 
@@ -41,7 +45,7 @@
   margin: 0%;
 }
 
-#editabout, #editsection {
+#editsection {
   color: black;
   border-style: none;
   margin-left: 80%;
@@ -50,6 +54,7 @@
 .edit-button {
   color: black;
   border-style: solid;
+  margin-left: 80%;
 }
 
 .edit-button:hover {

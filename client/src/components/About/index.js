@@ -60,7 +60,11 @@ const About = ({ userId, loggedInUserId }) => {
     <div className="about-content">
       {canEditAbout && !editMode && (
         <>
-          <button className="button" id="editabout" onClick={handleEditClick}>
+          <button
+            className="button edit-button"
+            id="editabout"
+            onClick={handleEditClick}
+          >
             <img
               src={"/images/pencil.png"}
               alt="edit-icon"
