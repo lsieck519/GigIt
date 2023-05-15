@@ -69,18 +69,18 @@ export const ADD_GIG = gql`
     }
   }
 `;
-
-export const REMOVE_GIG = gql`
-  mutation removeGig($id: ID!) {
-    removeGig(id: $id) {
-      user {
-        gigs {
-          _id
-        }
-      }
-    }
-  }
-`;
+// removing 
+// export const REMOVE_GIG = gql`
+//   mutation removeGig($id: ID!) {
+//     removeGig(id: $id) {
+//       user {
+//         gigs {
+//           _id
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export const UPDATE_SOCIAL = gql`
   mutation updateSocial(
