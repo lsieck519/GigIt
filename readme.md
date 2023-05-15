@@ -23,7 +23,6 @@ With GigIt, you can build connections and earn money doing what you love. So, wh
 - [Installation](#installation)
 - [Credit](#credit)
 - [Contact](#contact)
-- [High-Level Guidance](#high-level-guidance)
 - [License](#license)
 
 ## **_User Story_**
@@ -63,14 +62,6 @@ Follow The GigIt Team on Github to stay up to date with their current projects:
 [Nikki Dallich](https://github.com/ndallich1)
 [Corbin](https://github.com/cxrstings)
 [Mary Webby](https://github.com/marywebby)
-
-## **_High-level Guidance_**
-
-What are the different pieces of a feature?
-
-- GraphQL "Contract" (typedef)
-- React component(s) look like (props)
-- Resolver (the thing that actually goes and gets the data)
 
 ## **_License_**
 
