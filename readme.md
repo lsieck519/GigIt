@@ -37,7 +37,7 @@ By navigating to the [deployed app](deployed_app_link_here), you can sign up by 
 
 ![GigIt Homepage](/client/public/images/homepage-screenshot.png)
 ![GigIt Homepage 2](/client/public/images/homepage-screenshot2.png)
-![GigProfile](/client/public/images/{insert-image-name-here}.jpg)
+![GigProfile](/client/public/images/gigprofile-screenshot.png)
 
 ## **_Installation_**
 
