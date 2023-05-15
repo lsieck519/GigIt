@@ -17,7 +17,7 @@ const typeDefs = gql`
     description: String
     image: String
     compensation: String
-    yearsExperience: Int
+    yearsExperience: String
   }
 
   type User {
@@ -67,7 +67,7 @@ const typeDefs = gql`
       description: String
       image: String
       compensation: String
-      yearsExperience: Int
+      yearsExperience: String
     ): Gig
     updateContact(email: String, city: String, state: String): User
   }
