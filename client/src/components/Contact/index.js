@@ -90,14 +90,15 @@ const Contact = ({ userId, loggedInUserId }) => {
     console.log("hello");
     try {
       console.log("hello again");
-      const { data } = await updateSocial({
-        variables: {
-          linkedIn: editedLinkedIn,
-          instagram: editedInstagram,
-          facebook: editedFacebook,
-          github: editedGithub,
-        },
-      });
+      // commenting this part out while since it's causing error 
+      // const { data } = await updateSocial({
+      //   variables: {
+      //     linkedIn: editedLinkedIn,
+      //     instagram: editedInstagram,
+      //     facebook: editedFacebook,
+      //     github: editedGithub,
+      //   },
+      // });
       const stuff = await updateContact({
         variables: {
           email: editedEmail,

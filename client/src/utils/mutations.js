@@ -112,18 +112,13 @@ export const UPDATE_SOCIAL = gql`
   }
 `;
 
+
 export const UPDATE_CONTACT = gql`
   mutation updateContact($email: String, $city: String, $state: String) {
-    user {
-      socials {
-        _id
-        linkedIn
-        instagram
-        github
-        facebook
-        stackOverflow
-        twitter
-      }
+    updateContact(email: $email, city: $city, state: $state) {
+      email
+      city
+      state
     }
   }
 `;
