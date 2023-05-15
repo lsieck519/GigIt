@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import AuthService from '../../utils/auth';
-import { useQuery, useMutation } from '@apollo/client';
-import './About.css';
-import { GET_USER_PROFILE } from '../../utils/queries';
-import { UPDATE_ABOUT } from '../../utils/mutations';
+import React, { useEffect, useState } from "react";
+import AuthService from "../../utils/auth";
+import { useQuery, useMutation } from "@apollo/client";
+import "./About.css";
+import { GET_USER_PROFILE } from "../../utils/queries";
+import { UPDATE_ABOUT } from "../../utils/mutations";
 
 const About = ({ userId, loggedInUserId }) => {
-  const [about, setAbout] = useState('');
+  const [about, setAbout] = useState("");
   const [editMode, setEditMode] = useState(false);
-  const [editedAbout, setEditedAbout] = useState('');
+  const [editedAbout, setEditedAbout] = useState("");
   const { loading, error, data } = useQuery(GET_USER_PROFILE, {
     variables: {
       id: userId,
@@ -37,7 +37,7 @@ const About = ({ userId, loggedInUserId }) => {
       setAbout(editedAbout);
       setEditMode(false);
     } catch (err) {
-      console.error('Unable to update about');
+      console.error("Unable to update about");
     }
   };
 
@@ -54,7 +54,7 @@ const About = ({ userId, loggedInUserId }) => {
   const { firstName, lastName } = data.user;
 
   const isCurrentUser = userId === loggedInUserId;
-  const canEditAbout = isCurrentUser && loggedInUserId !== '';
+  const canEditAbout = isCurrentUser && loggedInUserId !== "";
 
   return (
     <div className="about-content">
@@ -62,7 +62,7 @@ const About = ({ userId, loggedInUserId }) => {
         <>
           <button className="button" id="editabout" onClick={handleEditClick}>
             <img
-              src={'/images/pencil.png'}
+              src={"/images/pencil.png"}
               alt="edit-icon"
               className="edit-icon"
             />

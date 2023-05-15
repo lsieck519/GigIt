@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Gig, Social } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Gig, Social } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -16,7 +16,7 @@ const resolvers = {
 
         return user;
       } else {
-        console.log('Not logged in');
+        console.log("Not logged in");
       }
     },
   },
@@ -31,18 +31,18 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
       const token = signToken(user);
       return { token, user };
     },
     updateAbout: async (parent, { about }, context) => {
       if (!context.user) {
-        throw new Error('Authentication required.');
+        throw new Error("Authentication required.");
       }
       try {
         const user = await User.findByIdAndUpdate(
@@ -52,7 +52,7 @@ const resolvers = {
         );
         return user;
       } catch (error) {
-        throw new Error('Failed to update user about!');
+        throw new Error("Failed to update user about!");
       }
     },
     addGig: async (
@@ -61,7 +61,7 @@ const resolvers = {
       context
     ) => {
       if (!context.user) {
-        throw new Error('Authentication required.');
+        throw new Error("Authentication required.");
       }
 
       try {
@@ -81,38 +81,51 @@ const resolvers = {
 
         return newGig;
       } catch (error) {
-        throw new Error('Failed to add gig.');
+        throw new Error("Failed to add gig.");
       }
     },
 
-    addSocial: async (
+    updateSocial: async (
       parent,
       { linkedIn, instagram, github, facebook, stackOverflow, twitter },
       context
     ) => {
       if (!context.user) {
-        throw new Error('Authentication required.');
+        throw new Error("Authentication required.");
       }
 
       try {
         const user = await User.findById(context.user._id);
 
-        const newSocial = {
-          linkedIn,
-          instagram,
-          github,
-          facebook,
-          stackOverflow,
-          twitter,
-        };
-
-        user.socials = newSocial;
+        user.socials.linkedIn = linkedIn;
+        user.socials.instagram = instagram;
+        user.socials.github = github;
+        user.socials.facebook = facebook;
+        user.socials.stackOverflow = stackOverflow;
+        user.socials.twitter = twitter;
 
         await user.save();
 
-        return newSocial;
+        return user.socials;
       } catch (error) {
-        throw new Error('Failed to add social.');
+        throw new Error("Failed to add social.");
+      }
+    },
+
+    updateContact: async (parent, { email, city, state }, context) => {
+      if (!context.user) {
+        throw new Error("Authentication required.");
+      }
+
+      try {
+        const contact = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $set: { email: email, city: city, state: state } },
+          { new: true }
+        );
+        return contact;
+      } catch (error) {
+        throw new Error("Failed to update user contact!");
       }
     },
   },

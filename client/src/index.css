@@ -4,12 +4,18 @@ body {
   /* background-color: hsl(152, 44%, 47%); */
 }
 
-.button {
+.edit-contact-button {
   font-family: 'League Spartan', sans-serif;
   font-size: 16px;
-  margin: 2px;
-  margin-left: 0px;
   margin-top: 6px;
+  margin-left: 12px;
+}
+
+.edit-socials-button {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  margin-top: 6px;
+  margin-right: 8px;
 }
 
 .edit-icon {
@@ -40,7 +46,7 @@ input {
 
 .home-page{
   width: 70%;
+  height: 100vh;
 }
-
 
 
