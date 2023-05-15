@@ -46,10 +46,10 @@ export const UPDATE_ABOUT = gql`
 export const ADD_GIG = gql`
   mutation addGig(
     $title: String!
-    $description: String
+    $description: String!
     $image: String
-    $compensation: String
-    $yearsExperience: Int
+    $compensation: String!
+    $yearsExperience: String!
   ) {
     addGig(
       title: $title
@@ -58,16 +58,14 @@ export const ADD_GIG = gql`
       compensation: $compensation
       yearsExperience: $yearsExperience
     ) {
-      user {
-        gigs {
+        # Gig {
           _id
           title
           description
           image
           compensation
           yearsExperience
-        }
-      }
+        # }
     }
   }
 `;

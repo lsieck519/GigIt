@@ -21,8 +21,7 @@ const gigSchema = new Schema({
     type: String,
   },
   yearsExperience: {
-    type: Number,
-    min: 0,
+    type: String,
   },
 });
 

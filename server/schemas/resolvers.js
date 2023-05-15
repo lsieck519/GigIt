@@ -81,7 +81,7 @@ const resolvers = {
 
         return newGig;
       } catch (error) {
-        throw new Error('Failed to add gig.');
+        console.log(error);
       }
     },
 
