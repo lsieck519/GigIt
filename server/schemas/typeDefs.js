@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Social {
@@ -54,7 +54,7 @@ const typeDefs = gql`
     ): Auth
     login(email: String!, password: String!): Auth
     updateAbout(about: String!): User
-    addSocial(
+    updateSocial(
       linkedIn: String
       instagram: String
       github: String
@@ -69,15 +69,8 @@ const typeDefs = gql`
       compensation: String
       yearsExperience: String
     ): Gig
+    updateContact(email: String, city: String, state: String): User
   }
 `;
 
 module.exports = typeDefs;
-
-// updateSocial(
-//  _id: ID!
-//   ): Social
-
-//   removeGig(
-//    _id: ID!
-//    ): Gig

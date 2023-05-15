@@ -37,8 +37,8 @@ export const LOGIN_USER = gql`
 export const UPDATE_ABOUT = gql`
   mutation updateAbout($about: String!) {
     updateAbout(about: $about) {
-        _id
-        about
+      _id
+      about
     }
   }
 `;
@@ -82,8 +82,8 @@ export const REMOVE_GIG = gql`
   }
 `;
 
-export const ADD_SOCIAL = gql`
-  mutation addSocial(
+export const UPDATE_SOCIAL = gql`
+  mutation updateSocial(
     $linkedIn: String
     $instagram: String
     $github: String
@@ -91,7 +91,7 @@ export const ADD_SOCIAL = gql`
     $stackOverflow: String
     $twitter: String
   ) {
-    addSocial(
+    updateSocial(
       linkedIn: $linkedIn
       instagram: $instagram
       github: $github
@@ -99,28 +99,30 @@ export const ADD_SOCIAL = gql`
       stackOverflow: $stackOverflow
       twitter: $twitter
     ) {
-      user {
-        socials {
-          _id
-          linkedIn
-          instagram
-          github
-          facebook
-          stackOverflow
-          twitter
-        }
+      socials {
+        _id
+        linkedIn
+        instagram
+        github
+        facebook
+        stackOverflow
+        twitter
       }
     }
   }
 `;
 
-export const UPDATE_SOCIAL = gql`
-  mutation updateSocial($id: ID!) {
-    updateSocial(id: $id) {
-      user {
-        socials {
-          _id
-        }
+export const UPDATE_CONTACT = gql`
+  mutation updateContact($email: String, $city: String, $state: String) {
+    user {
+      socials {
+        _id
+        linkedIn
+        instagram
+        github
+        facebook
+        stackOverflow
+        twitter
       }
     }
   }
