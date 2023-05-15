@@ -34,7 +34,7 @@ const GigProfile = () => {
   console.log("loggedInUserId:", loggedInUserId);
 
   // Fetch the user profile by using the useQuery hook
-  const { loading, error, data } = useQuery(GET_USER_PROFILE, {
+  const { loading, error, data, refetch } = useQuery(GET_USER_PROFILE, {
     variables: { id: userId, loggedInUserId: loggedInUserId },
   });
   // also need to have ADD_GIG form be shown if the user is logged in
@@ -61,7 +61,7 @@ const GigProfile = () => {
         yearsExperience: yearsExperience.current.value,
       },
     });
-    refreshGigs(gigRefresh + 1);
+    refetch();
   };
 
   return (
@@ -140,9 +140,6 @@ const GigProfile = () => {
             <button className="add-gig-button button">
               Add Gig to Profile
             </button>
-            <p className="refreshTitle">
-              Refresh the page and check out your newly posted gig!
-            </p>
           </form>
           <div>
             {gigs.map((gig) => (
