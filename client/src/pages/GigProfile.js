@@ -7,7 +7,7 @@ import { GET_USER_PROFILE } from "../utils/queries";
 
 import { useMutation } from "@apollo/client";
 import { ADD_GIG } from "../utils/mutations";
-import { useRef, useState} from "react";
+import { useRef, useState } from "react";
 
 import Card from "../components/Card";
 import About from "../components/About";
@@ -16,14 +16,12 @@ import Contact from "../components/Contact";
 
 // Create a page where we display gig information
 const GigProfile = () => {
-  // getting user profile 
+  // getting user profile
   const { userId } = useParams();
   const loggedInUser = AuthService.getProfile();
   const loggedInUserId = loggedInUser?.data?._id;
 
-  const [gigRefresh, refreshGigs] = useState (
-    0 
-  );
+  const [gigRefresh, refreshGigs] = useState(0);
 
   // setting the gig descriptions to use state
   const title = useRef(null);
@@ -36,10 +34,10 @@ const GigProfile = () => {
   console.log("loggedInUserId:", loggedInUserId);
 
   // Fetch the user profile by using the useQuery hook
-  const { loading, error, data } = useQuery(GET_USER_PROFILE, {
+  const { loading, error, data, refetch } = useQuery(GET_USER_PROFILE, {
     variables: { id: userId, loggedInUserId: loggedInUserId },
   });
-  // also need to have ADD_GIG form be shown if the user is logged in 
+  // also need to have ADD_GIG form be shown if the user is logged in
   // const isCurrentUser = userId === loggedInUserId;
   // const canEditAbout = isCurrentUser && loggedInUserId !== '';
 
@@ -63,7 +61,7 @@ const GigProfile = () => {
         yearsExperience: yearsExperience.current.value,
       },
     });
-    refreshGigs(gigRefresh + 1)
+    refetch();
   };
 
   return (
@@ -76,68 +74,72 @@ const GigProfile = () => {
         </aside>
         <div className="section column is-four-fifths">
           <section>
-            <div className="container">
+            <div className="container about-container">
               <About userId={userId} loggedInUserId={loggedInUserId} />
               {/* <Card userId={userId} loggedInUserId={currentUserId} /> */}
             </div>
           </section>
-{/* section for adding a gig */}
-        <div> Add Gigs! </div>
-          <form onSubmit={handleSubmit}>
-                <label>
-                  Title: 
-                  <input
-                    type="text"
-                    ref={title}
-                    placeholder="What gig can you provide?"
-                    name="addingGigTitle"
-                    value={gigs?.title}
-                  />
-                </label>
-                <label>
-                  Photo (Optional): 
-                  <input
-                    type="text"
-                    ref={image}
-                    placeholder="Provide a link for an image of your gig!"
-                    name="addingGigTitle"
-                    value={gigs?.image}
-                  />
-                </label>
-                <label>
-                  Description: 
-                  <input
-                    type="text"
-                    ref={description}
-                    placeholder="Tell us about what your gig is..."
-                    name="addingGigTitle"
-                    value={gigs?.description}
-                  />
-                </label>
-                <label>
-                  Compensation: 
-                  <input
-                    type="text"
-                    ref={compensation}
-                    placeholder="How much will you charge?"
-                    name="addingGigTitle"
-                    value={gigs?.compensation}
-                  />
-                </label>
-                <label>
-                  Years Experience: 
-                  <input
-                    type="text"
-                    ref={yearsExperience}
-                    placeholder="How long have you been doing this gig?"
-                    name="addingGigTitle"
-                    value={gigs?.yearsExperience}
-                  />
-                </label>
-                <button>
-                  Add Gig
-                </button>
-                <p className="refreshTitle">Refresh the page and check out your newly posted gig!</p>
+          {/* section for adding a gig */}
+          <div className="add-gigs"> Add a Gig! </div>
+          <form className="addGigForm" onSubmit={handleSubmit}>
+            <label>
+              Title:
+              <input
+                className="input"
+                type="text"
+                ref={title}
+                placeholder="What gig can you provide?"
+                name="addingGigTitle"
+                value={gigs?.title}
+              />
+            </label>
+            <label>
+              Photo (Optional):
+              <input
+                className="input"
+                type="text"
+                ref={image}
+                placeholder="Provide a link for an image of your gig!"
+                name="addingGigTitle"
+                value={gigs?.image}
+              />
+            </label>
+            <label>
+              Description:
+              <input
+                className="input"
+                type="text"
+                ref={description}
+                placeholder="Tell us about what your gig is..."
+                name="addingGigTitle"
+                value={gigs?.description}
+              />
+            </label>
+            <label>
+              Compensation:
+              <input
+                className="input"
+                type="text"
+                ref={compensation}
+                placeholder="How much will you charge?"
+                name="addingGigTitle"
+                value={gigs?.compensation}
+              />
+            </label>
+            <label>
+              Years Experience:
+              <input
+                className="input"
+                type="text"
+                ref={yearsExperience}
+                placeholder="How long have you been doing this gig?"
+                name="addingGigTitle"
+                value={gigs?.yearsExperience}
+              />
+            </label>
+            <button className="add-gig-button button">
+              Add Gig to Profile
+            </button>
           </form>
           <div>
             {gigs.map((gig) => (

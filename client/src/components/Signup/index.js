@@ -15,7 +15,7 @@ function Signup(props) {
     password: "",
   });
 
-  const [addUser, {error}] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,6 +57,7 @@ function Signup(props) {
         <form className="gig-form" onSubmit={handleSubmit}>
           <div className="first-input">
             <input
+              className="input"
               placeholder="First Name"
               name="firstName"
               type="firstName"
@@ -66,6 +67,7 @@ function Signup(props) {
           </div>
           <div className="last-input">
             <input
+              className="input"
               placeholder="Last Name"
               name="lastName"
               type="lastName"
@@ -75,6 +77,7 @@ function Signup(props) {
           </div>
           <div className="username-input">
             <input
+              className="input"
               placeholder="Username"
               name="username"
               type="username"
@@ -84,6 +87,7 @@ function Signup(props) {
           </div>
           <div className="email-input">
             <input
+              className="input"
               placeholder="Email"
               name="email"
               type="email"
@@ -93,6 +97,7 @@ function Signup(props) {
           </div>
           <div className="password-input">
             <input
+              className="input"
               placeholder="Password"
               name="password"
               type="password"
@@ -103,9 +108,7 @@ function Signup(props) {
 
           {error ? (
             <div>
-              <p className="cred-error">
-                Please fill in all fields! 
-              </p>
+              <p className="cred-error">Please fill in all fields!</p>
             </div>
           ) : null}
 
