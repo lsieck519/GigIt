@@ -18,6 +18,16 @@ body {
   margin-right: 8px;
 }
 
+.add-gig-button {
+  font-family: 'League Spartan', sans-serif;
+  background-color: #85BB65;
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
 .edit-icon {
   height: 16px;
   padding-right: 5px;
@@ -47,6 +57,25 @@ input {
 .home-page{
   width: 70%;
   height: 100vh;
+}
+
+label {
+  color: #175e3c;
+}
+
+.add-gigs {
+  color: #85BB65;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.addGigForm {
+  margin-bottom: 40px;
+  width: 85%;
+}
+
+.refreshTitle {
+  color: #175e3c;
 }
 
 

@@ -43,6 +43,7 @@ function Login(props) {
         <form onSubmit={handleSubmit}>
           <div className="email-input">
             <input
+              className="input"
               placeholder="Email"
               name="email"
               type="email"
@@ -52,6 +53,7 @@ function Login(props) {
           </div>
           <div className="password-input">
             <input
+              className="input"
               placeholder="Password"
               name="password"
               type="password"

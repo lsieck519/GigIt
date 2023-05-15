@@ -1,49 +1,60 @@
 .tile {
-
     background-color: white;
-    
-    opacity: .7;
-    
-    color: white;
-    
+    opacity: .7;  
+    color: white; 
     width: 350px;
-    
     height: auto;
-    
     margin-left: auto;
-    
     margin-right: auto;
-    
     border-radius: 10%;
+}
     
-    }
+.gigTitle {
+    font-size: 24px; 
+    color: #368b63;  
+    font-weight: 600;
+    padding: 10px;
+    padding-bottom: 0px;
+}
     
-    .gigTitle {
+.gigBody {
+    font-size: 16px;
+    padding: 10px;
+    padding-top: 0px;
+    font-weight: 400;
+    margin: 10px;
+    color: #f1f1f1;
+}
     
-    font-size: 2em;
-    
-    color: #ffffff;
-    
-    }
-    
-    .gigbody {
-    
-    font-size: 1.5em;
-    
-    }
-    
-      
-    
-    .gig-image {
-    
-    width: 200px;
-    
-    /* margin-left: 20px;
-    
-    margin-top: 20px; */
-    
-    border-radius: 5%;
-    
+.gig-image {
+    /* margin-left: 20px; 
+    margin-top: 20px; */ 
     box-shadow: inset;
-    
-    }
+    margin: 0px;
+    padding: 0px;
+}
+
+.card-background {
+    width: 55%;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #368b63;
+    border-width: 3px;
+}
+
+.top-card {
+    border-radius: 22px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #f1f1f1;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+strong {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f1f1f1;
+}

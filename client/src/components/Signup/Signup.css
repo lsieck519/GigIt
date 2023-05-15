@@ -27,7 +27,9 @@
 input {
   width: 100%;
   height: 30px;
-  margin: 2px;
+  margin: 4px;
+  margin-left: 0px;
+  border-radius: 2px;
 }
 
 .signup-form .button {
@@ -41,5 +43,9 @@ input {
 .signup-form .button:hover {
   border-color: #228657;
   color: white;
+}
+
+.password-input {
+  margin-bottom: 4px;
 }
 
