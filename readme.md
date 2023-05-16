@@ -33,7 +33,7 @@ With GigIt, you can build connections and earn money doing what you love. So, wh
 
 ## **_Usage_**
 
-By navigating to the [deployed app](deployed_app_link_here), you can sign up by using the GigStarted form at the bottom of the page. Once your account is created, you will automatically be navigated to your personal GigProfile where you can edit your contact and about sections, and start adding your first Gig!
+By navigating to the [deployed app](https://gigit.herokuapp.com/), you can sign up by using the GigStarted form at the bottom of the page. Once your account is created, you will automatically be navigated to your personal GigProfile where you can edit your contact and about sections, and start adding your first Gig!
 
 ![GigIt Homepage](/client/public/images/homepage-screenshot.png)
 ![GigIt Homepage 2](/client/public/images/homepage-screenshot2.png)
